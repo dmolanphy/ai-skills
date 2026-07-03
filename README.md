@@ -1,0 +1,49 @@
+# design-skills
+
+Central, version-controlled home for Claude custom skills — one folder per skill. Kept here instead of scattered across individual computers so any machine can pull down the current set.
+
+## Structure
+
+```
+design-skills/
+└── ds-foundations/       # a single skill: SKILL.md + assets/ + references/
+    ├── SKILL.md
+    ├── assets/
+    └── references/
+```
+
+Future skills go here the same way — a new top-level folder per skill, each with its own `SKILL.md`.
+
+## How to actually use a skill from here
+
+Skills reach Claude differently depending on which surface you're using — there's no single "sync" that covers both. See the note in each product's docs for specifics; the short version:
+
+### Claude Code
+Skills are read live from a folder on disk — personal skills at `~/.claude/skills/`, project skills at `.claude/skills/` inside a repo. Since that's just a directory, this repo can be cloned or symlinked straight in:
+
+```bash
+git clone <this-repo-url> ~/.claude/skills/design-skills
+# or, if you already have other personal skills:
+git clone <this-repo-url> /tmp/design-skills && cp -r /tmp/design-skills/ds-foundations ~/.claude/skills/
+```
+
+Pulling updates (`git pull`) picks up edits on the next Claude Code session — no re-upload needed.
+
+### claude.ai (web / desktop / Cowork)
+Custom skills are uploaded as a **ZIP file** through **Settings > Customize > Skills** — claude.ai doesn't read live from a git folder. Workflow:
+
+1. `git pull` this repo to get the latest version of the skill.
+2. Zip the individual skill folder (not the whole repo) — e.g. `cd design-skills && zip -r ds-foundations.zip ds-foundations`.
+3. Upload that zip in Settings > Customize > Skills. If a version already exists there, delete it first, then re-upload.
+
+This repo is the source of truth; the claude.ai copy is a manual snapshot that needs re-uploading after edits made here.
+
+## Making edits
+
+Edit the `SKILL.md` / `references/*.md` files directly (by hand, or by asking Claude to make the edit and copying the result back here), then:
+
+```bash
+git add .
+git commit -m "describe what changed"
+git push
+```
