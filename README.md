@@ -7,7 +7,7 @@ Central, version-controlled home for my agent skills — one folder per skill, f
 ```
 AI-Skills/
 ├── writing-style/          # my voice: headlines, copy, decks, briefs
-├── design-md/              # generate DESIGN.md specs from Figma files
+├── design-spec/            # generate DESIGN.md specs from Figma files
 ├── ds-foundations/         # design-system foundations in Figma
 ├── visual-storyteller/     # narrative structure for decks, moodboards, data stories
 ├── image-prompt-engineer/  # layered prompts for AI image generation

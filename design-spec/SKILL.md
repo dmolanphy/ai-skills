@@ -1,5 +1,5 @@
 ---
-name: design-md
+name: design-spec
 description: >
   Generate a DESIGN.md file from a Figma design file, following the Stitch DESIGN.md specification
   (https://stitch.withgoogle.com/docs/design-md/specification). Use this skill any time the user
