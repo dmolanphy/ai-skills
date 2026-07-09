@@ -17,7 +17,7 @@ AI-Skills/
 
 `visual-storyteller`, `image-prompt-engineer`, and `brand-guardian` are adapted from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (MIT) — converted from agent-persona format to SKILL.md and distilled to fit my workflow. Provenance is noted at the bottom of each SKILL.md.
 
-`transitions-dev` is vendored **verbatim** from [Jakubantalik/transitions.dev](https://github.com/Jakubantalik/transitions.dev) (`skills/transitions-dev/`, captured 2026-07-09). It's auto-generated from the upstream site, so don't hand-edit it — to update, re-copy that folder from a fresh clone. Deploy when building components or prototypes. For personal use; not for redistribution (upstream repo has no explicit license).
+`transitions-dev` is vendored **verbatim** from [Jakubantalik/transitions.dev](https://github.com/Jakubantalik/transitions.dev) (`skills/transitions-dev/`, captured 2026-07-09). It's auto-generated from the upstream site, so don't hand-edit it — to update, re-copy that folder from a fresh clone. One local patch: the frontmatter description is compressed to fit the 1024-char install limit (upstream's is 1193) — re-apply that trim after any upstream refresh. Deploy when building components or prototypes. For personal use; not for redistribution (upstream repo has no explicit license).
 
 Each skill folder: `SKILL.md` required, plus optional `assets/` and `references/`. Future skills go here the same way — a new top-level kebab-case folder per skill.
 
