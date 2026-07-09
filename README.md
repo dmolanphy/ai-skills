@@ -1,18 +1,17 @@
-# design-skills
+# AI-Skills
 
-Central, version-controlled home for Claude custom skills — one folder per skill. Kept here instead of scattered across individual computers so any machine can pull down the current set.
+Central, version-controlled home for my agent skills — one folder per skill, following the open SKILL.md standard. Lives in DM-OS so my skills travel with me; platforms get symlinks or copies, never ownership.
 
 ## Structure
 
 ```
-design-skills/
-└── ds-foundations/       # a single skill: SKILL.md + assets/ + references/
-    ├── SKILL.md
-    ├── assets/
-    └── references/
+AI-Skills/
+├── writing-style/        # my voice: headlines, copy, decks, briefs
+├── design-md/            # generate DESIGN.md specs from Figma files
+└── ds-foundations/       # design-system foundations in Figma
 ```
 
-Future skills go here the same way — a new top-level folder per skill, each with its own `SKILL.md`.
+Each skill folder: `SKILL.md` required, plus optional `assets/` and `references/`. Future skills go here the same way — a new top-level kebab-case folder per skill.
 
 ## How to actually use a skill from here
 
