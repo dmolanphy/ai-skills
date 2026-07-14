@@ -23,9 +23,9 @@ A living inventory of skills that exist today, organized by discipline, with gap
 - `brand-guardian` — brand strategy foundations, positioning, voice/messaging architecture, consistency audits
 - `design:user-research` — research planning (interview guides, usability tests, surveys)
 - `design:research-synthesis` — synthesizes raw research into themes/insights/recommendations
+- `competitive-audit` — market landscape + how competitors frame the problem and describe their solutions. Discovers competitors and adjacent industries when David doesn't already know them, pauses for his approval on that list before researching. Deliberately strategic/market-focused — UX critique stays with `design:design-critique`, deep brand voice/identity work stays with `brand-guardian`. Reuses `buyer-journey-builder`'s validated/unvalidated/table-stakes evidence framework and output-format options.
 
 **Need to build:**
-- Competitive audit skill (explicitly called out as a `product-owner` use case — distinct from user research, focused on competitor positioning/feature/UX benchmarking)
 - Go-to-market / launch strategy skill (partially adjacent to brand-guardian, but GTM sequencing is distinct)
 
 ---
@@ -111,7 +111,7 @@ For the orchestrator to actually discover and use new skills as they're built (r
 **Priority build order (based on what's explicitly missing and most-cited):**
 1. ~~`grill-me` (Product Management)~~ — done
 2. ~~Code review (Develop)~~ — done
-3. Competitive audit (Strategy) — **next**
-4. SEO/GEO (Develop/Content crossover)
+3. ~~Competitive audit (Strategy)~~ — done
+4. SEO/GEO (Develop/Content crossover) — **next**
 5. Content mapping (Content) — buyer-journey-builder shipped ahead of schedule, covers the journey-mapping half
 6. `product-owner` (Product Management) — built last, references everything above

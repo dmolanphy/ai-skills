@@ -26,7 +26,7 @@ Machine-readable index for `product-owner` to match tasks to skills. Update this
 | brand-guardian | Strategy | brand strategy | Brand positioning, visual identity specs, voice/messaging architecture, brand consistency audits | active |
 | design:user-research | Strategy | research planning | Design interview guides, usability tests, surveys, research questions | active |
 | design:research-synthesis | Strategy | research synthesis | Synthesize interviews/surveys/tickets into themes, segments, prioritized recommendations | active |
-| competitive-audit | Strategy | competitive analysis | Benchmark competitor positioning, features, UX against the brief | planned |
+| competitive-audit | Strategy | competitive & market analysis | Market landscape + how competitors frame the problem and describe their solutions; discovers competitors/adjacent industries when unknown, pauses for approval before deep research (strategic/market focus, not UX or brand-voice) | active |
 | gtm-strategy | Strategy | launch strategy | Go-to-market sequencing and launch planning | planned |
 
 ## Content
