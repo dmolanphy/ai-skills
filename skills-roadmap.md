@@ -10,9 +10,10 @@ A living inventory of skills that exist today, organized by discipline, with gap
 **Have:**
 - `design:design-critique` — structured usability/hierarchy/consistency feedback. Closest existing thing to a "grill-me" for finished work, but reactive (reviews output) rather than proactive (stress-tests a plan before work starts).
 - `grill-me` — devil's-advocate stress test, both brief-mode (is this the right problem) and solution-mode (does this actually solve it). Its Blocking Issues / Worth Considering / Direct Questions format is now reused by other skills in this library (e.g. `code-review`).
+- `product-owner` — literal dispatcher, not a narrating SKILL.md. Flow: pre-decomposition clarity check (separate from grill-me) → decompose into tasks, matching each to a `skills-registry.md` row and assigning a model (Haiku/Sonnet/Opus by task nature) → grill-me brief-mode on the task list → per-task **Deploy now / Defer / Skip** approval (not one blanket yes) → dispatches real subagents via the Agent/Task tool, parallel where independent, sequential where dependent → synthesizes directly (no synthesis subagent) → grill-me solution-mode → presents the deliverable, resurfacing anything deferred so it can't quietly fall out of scope. Requires the Agent/Task tool — built for Cowork/Agent-SDK, no fallback for platforms without real subagent dispatch. If a task hits a registry gap, it flags it and offers to log it in the backlog below rather than guessing or inventing a skill call.
 
 **Need to build:**
-- `product-owner` — dispatcher, not a narrating SKILL.md: digests a brief, runs a pre-decomposition clarity check (separate from grill-me — checks the brief has enough to work with before attempting decomposition at all), decomposes into tasks, assigns a model per subagent based on task complexity, dispatches real subagents via the Agent/Task tool, runs grill-me brief-mode on the task list before dispatch and solution-mode on the synthesized output before presenting, and proposes the right doc format per brief rather than defaulting to one. Never fully autonomous — task decomposition always pauses for approval before subagents are dispatched. Built last, once the rest of the bench exists (see priority build order below).
+- Nothing left on the original priority list — see the backlog below for what's next.
 
 ---
 
@@ -114,13 +115,13 @@ For the orchestrator to actually discover and use new skills as they're built (r
 3. ~~Competitive audit (Strategy)~~ — done
 4. ~~SEO/GEO (Develop/Content crossover)~~ — done
 5. Content mapping (Content) — **deferred, 2026-07-13.** David's pulling in his content strategist colleague at Huge to share their own approach rather than having this built from Claude's guess at the methodology. Not abandoned — revisit once that input is in hand.
-6. `product-owner` (Product Management) — **in progress as of 2026-07-13**, built last, references everything above
+6. ~~`product-owner` (Product Management)~~ — done, 2026-07-13. Built last, once the rest of the bench existed, as planned.
 
 ---
 
 ## Backlog — roles still needed (post-product-owner)
 
-Flagged as important by David (2026-07-13), not to be lost once `product-owner` ships. Not yet sequenced against each other — revisit priority order once product-owner is live and there's a dispatcher to actually route to these.
+Flagged as important by David (2026-07-13). `product-owner` shipped 2026-07-13 and can now dispatch to skills as they're built — this is the active next-up list. Not yet sequenced against each other.
 
 - **Content audit** (Content) — inventory + gap analysis of existing content
 - **Content mapping** (Content) — mapping content to funnel stages; deferred pending input from David's content strategist colleague at Huge

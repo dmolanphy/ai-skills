@@ -17,7 +17,7 @@ Machine-readable index for `product-owner` to match tasks to skills. Update this
 |---|---|---|---|---|
 | design:design-critique | Product Management | review | Structured feedback on usability, hierarchy, consistency of a finished design | active |
 | grill-me | Product Management | stress-test | Devil's-advocate pressure-test of a brief or proposed solution before work starts/ships (two modes: brief-mode, solution-mode) | active |
-| product-owner | Product Management | orchestration | Digest brief, decompose into tasks, assign models/skills, dispatch, synthesize | planned (in progress) |
+| product-owner | Product Management | orchestration | Literal dispatcher: clarity check, decompose into tasks, match skills via this registry, assign model per task, per-task deploy/defer/skip approval, dispatch real subagents (parallel/sequential by dependency), synthesize, grill-me at two checkpoints. Requires Agent/Task tool — Cowork/Agent-SDK only | active |
 
 ## Strategy
 
