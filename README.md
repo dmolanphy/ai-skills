@@ -6,14 +6,20 @@ Central, version-controlled home for my agent skills — one folder per skill, f
 
 ```
 AI-Skills/
-├── writing-style/          # my voice: headlines, copy, decks, briefs
-├── design-spec/            # generate DESIGN.md specs from Figma files
-├── ds-foundations/         # design-system foundations in Figma
-├── visual-storyteller/     # narrative structure for decks, moodboards, data stories
-├── image-prompt-engineer/  # layered prompts for AI image generation
-├── brand-guardian/         # brand strategy foundations, identity systems, audits
-└── transitions-dev/        # 21 production-ready CSS transitions + motion tokens (vendored)
+├── writing-style/           # my voice: headlines, copy, decks, briefs
+├── design-spec/             # generate DESIGN.md specs from Figma files
+├── ds-foundations/          # design-system foundations in Figma
+├── visual-storyteller/      # narrative structure for decks, moodboards, data stories
+├── image-prompt-engineer/   # layered prompts for AI image generation
+├── brand-guardian/          # brand strategy foundations, identity systems, audits
+├── grill-me/                # devil's-advocate stress-test for a brief or a finished deliverable
+├── buyer-journey-builder/   # evidence-based buyer journey maps, validated vs. assumed
+├── transitions-dev/         # 21 production-ready CSS transitions + motion tokens (vendored)
+├── skills-registry.md       # machine-readable skill index for the in-progress product-owner orchestrator
+└── skills-roadmap.md        # discipline-by-discipline inventory of built vs. planned skills
 ```
+
+`skills-registry.md` and `skills-roadmap.md` aren't skills themselves — they're planning docs for a `product-owner` orchestrator (not yet built) that will decompose briefs and dispatch them to the right skill. Keep the registry in sync whenever a skill here goes from planned to active.
 
 `visual-storyteller`, `image-prompt-engineer`, and `brand-guardian` are adapted from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (MIT) — converted from agent-persona format to SKILL.md and distilled to fit my workflow. Provenance is noted at the bottom of each SKILL.md.
 
