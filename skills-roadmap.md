@@ -114,4 +114,19 @@ For the orchestrator to actually discover and use new skills as they're built (r
 3. ~~Competitive audit (Strategy)~~ — done
 4. ~~SEO/GEO (Develop/Content crossover)~~ — done
 5. Content mapping (Content) — **deferred, 2026-07-13.** David's pulling in his content strategist colleague at Huge to share their own approach rather than having this built from Claude's guess at the methodology. Not abandoned — revisit once that input is in hand.
-6. `product-owner` (Product Management) — built last, references everything above
+6. `product-owner` (Product Management) — **in progress as of 2026-07-13**, built last, references everything above
+
+---
+
+## Backlog — roles still needed (post-product-owner)
+
+Flagged as important by David (2026-07-13), not to be lost once `product-owner` ships. Not yet sequenced against each other — revisit priority order once product-owner is live and there's a dispatcher to actually route to these.
+
+- **Content audit** (Content) — inventory + gap analysis of existing content
+- **Content mapping** (Content) — mapping content to funnel stages; deferred pending input from David's content strategist colleague at Huge
+- **Content strategy** (Content) — pillars, cadence, channel strategy, broader than voice & tone
+- **Message framework** (Content) — formal positioning statements, proof points, messaging hierarchy
+- **Go-to-market / launch strategy** (Strategy) — GTM sequencing, distinct from brand-guardian
+- **Back-end architect** (Develop) — design/review backend systems and architecture
+- **Front-end specialist** (Develop) — implementation patterns, distinct from `frontend-design`'s aesthetic-direction focus
+- **Wireframing/IA** (Design) — possible gap, not confirmed as needed — Design is otherwise the most mature category
