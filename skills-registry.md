@@ -73,7 +73,7 @@ Machine-readable index for `product-owner` to match tasks to skills. Update this
 | transitions-dev | Develop | micro-interactions | CSS transitions/animations for UI states (modals, dropdowns, loaders, etc.) | active |
 | code-review | Develop | code quality | Review code for correctness, quality, maintainability (general-purpose — distinct from security-review and PR-diff review) | active |
 | backend-architect | Develop | architecture | Design/review backend systems and architecture | planned |
-| seo-geo | Develop | SEO/GEO | Technical + content SEO/GEO optimization | planned |
+| seo-geo | Develop | SEO/GEO | Audits or plans traditional SEO and GEO (AI answer-engine citation) with equal weight; auto-detects audit vs. planning mode, does its own keyword research, can implement code fixes but always asks first | active |
 | frontend-specialist | Develop | implementation patterns | Frontend implementation patterns distinct from aesthetic direction | planned |
 
 ## Content Production

@@ -78,10 +78,10 @@ A living inventory of skills that exist today, organized by discipline, with gap
 - `transitions-dev` — CSS transitions/micro-interactions
 - `frontend-design` — also relevant here for build-time aesthetic decisions
 - `code-review` — general-purpose correctness/readability/maintainability review, any code regardless of language or whether it's a diff or a snippet. Distinct from the installed `security-review` (vulnerability-focused) and `review` (GitHub PR workflow). Reuses `grill-me`'s Blocking Issues / Worth Considering / Direct Questions output format.
+- `seo-geo` — traditional SEO and GEO (AI answer-engine citation) with equal billing between the two. Auto-detects audit mode (points at a live page/site/repo) vs. planning mode (content brief before anything's written). Does its own keyword/topic and current-best-practice research rather than waiting for targets. Can implement technical fixes directly in code but always proposes and gets explicit go-ahead first. Content/Develop crossover — content voice itself stays with `writing-style`/`design:ux-copy`; this defines the SEO/GEO requirements.
 
 **Need to build:**
 - Back-end architect skill (explicitly mentioned)
-- SEO/GEO skill (explicitly mentioned — technical + content crossover, may need a foot in both Content and Develop)
 - Front-end specialist skill distinct from `frontend-design` (that one's aesthetic-direction focused, not implementation-pattern focused)
 
 ---
@@ -112,6 +112,6 @@ For the orchestrator to actually discover and use new skills as they're built (r
 1. ~~`grill-me` (Product Management)~~ — done
 2. ~~Code review (Develop)~~ — done
 3. ~~Competitive audit (Strategy)~~ — done
-4. SEO/GEO (Develop/Content crossover) — **next**
-5. Content mapping (Content) — buyer-journey-builder shipped ahead of schedule, covers the journey-mapping half
+4. ~~SEO/GEO (Develop/Content crossover)~~ — done
+5. Content mapping (Content) — **next** — buyer-journey-builder shipped ahead of schedule and covers the journey-mapping half; content-mapping is narrower (mapping content assets to funnel stages)
 6. `product-owner` (Product Management) — built last, references everything above

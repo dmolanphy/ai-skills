@@ -16,6 +16,7 @@ AI-Skills/
 ├── buyer-journey-builder/   # evidence-based buyer journey maps, validated vs. assumed
 ├── code-review/             # general-purpose correctness/readability/maintainability review
 ├── competitive-audit/       # market landscape + how competitors frame and describe their solutions
+├── seo-geo/                 # traditional SEO + AI answer-engine (GEO) audit and planning
 ├── transitions-dev/         # 21 production-ready CSS transitions + motion tokens (vendored)
 ├── skills-registry.md       # machine-readable skill index for the in-progress product-owner orchestrator
 └── skills-roadmap.md        # discipline-by-discipline inventory of built vs. planned skills
