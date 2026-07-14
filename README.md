@@ -14,6 +14,7 @@ AI-Skills/
 ├── brand-guardian/          # brand strategy foundations, identity systems, audits
 ├── grill-me/                # devil's-advocate stress-test for a brief or a finished deliverable
 ├── buyer-journey-builder/   # evidence-based buyer journey maps, validated vs. assumed
+├── code-review/             # general-purpose correctness/readability/maintainability review
 ├── transitions-dev/         # 21 production-ready CSS transitions + motion tokens (vendored)
 ├── skills-registry.md       # machine-readable skill index for the in-progress product-owner orchestrator
 └── skills-roadmap.md        # discipline-by-discipline inventory of built vs. planned skills

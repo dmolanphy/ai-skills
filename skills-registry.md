@@ -71,7 +71,7 @@ Machine-readable index for `product-owner` to match tasks to skills. Update this
 | figma:figma-use-motion | Develop | motion authoring | Add/edit/inspect animation on a Figma node | active |
 | figma:figma-swiftui | Develop | SwiftUI | Translate between Figma and SwiftUI in either direction | active |
 | transitions-dev | Develop | micro-interactions | CSS transitions/animations for UI states (modals, dropdowns, loaders, etc.) | active |
-| code-review | Develop | code quality | Review code for correctness, quality, maintainability | planned |
+| code-review | Develop | code quality | Review code for correctness, quality, maintainability (general-purpose — distinct from security-review and PR-diff review) | active |
 | backend-architect | Develop | architecture | Design/review backend systems and architecture | planned |
 | seo-geo | Develop | SEO/GEO | Technical + content SEO/GEO optimization | planned |
 | frontend-specialist | Develop | implementation patterns | Frontend implementation patterns distinct from aesthetic direction | planned |

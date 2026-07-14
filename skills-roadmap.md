@@ -9,10 +9,10 @@ A living inventory of skills that exist today, organized by discipline, with gap
 
 **Have:**
 - `design:design-critique` — structured usability/hierarchy/consistency feedback. Closest existing thing to a "grill-me" for finished work, but reactive (reviews output) rather than proactive (stress-tests a plan before work starts).
+- `grill-me` — devil's-advocate stress test, both brief-mode (is this the right problem) and solution-mode (does this actually solve it). Its Blocking Issues / Worth Considering / Direct Questions format is now reused by other skills in this library (e.g. `code-review`).
 
 **Need to build:**
-- `product-owner` — orchestrator: digest brief → clarity check → task decomposition → model assignment → dispatch subagents/skills → synthesize + document. *(in progress)*
-- `grill-me` — devil's-advocate stress test. Needs scoping: grills the **brief** (are we solving the right problem?), grills a **proposed solution** before it ships, or both?
+- `product-owner` — dispatcher, not a narrating SKILL.md: digests a brief, runs a pre-decomposition clarity check (separate from grill-me — checks the brief has enough to work with before attempting decomposition at all), decomposes into tasks, assigns a model per subagent based on task complexity, dispatches real subagents via the Agent/Task tool, runs grill-me brief-mode on the task list before dispatch and solution-mode on the synthesized output before presenting, and proposes the right doc format per brief rather than defaulting to one. Never fully autonomous — task decomposition always pauses for approval before subagents are dispatched. Built last, once the rest of the bench exists (see priority build order below).
 
 ---
 
@@ -38,13 +38,13 @@ A living inventory of skills that exist today, organized by discipline, with gap
 - `design:ux-copy` — microcopy, error states, CTAs, empty states
 - `visual-storyteller` — narrative structure for decks, moodboards, storyboards
 - `image-prompt-engineer` — AI image prompt crafting (content production adjacent)
+- `buyer-journey-builder` — evidence-based buyer journey maps: phases, touchpoints, channels by demographic, validated vs. assumed claims
 
 **Need to build:**
 - Content audit skill (inventory + gap analysis of existing content)
-- Content mapping skill (mapping content to funnel stages / buyer journey — you mentioned this specifically)
+- Content mapping skill (mapping content to funnel stages — narrower than buyer-journey-builder, which now covers the journey-mapping half)
 - Content strategy skill (broader than voice & tone — pillars, cadence, channel strategy)
 - Message framework skill (formal positioning statements, proof points, messaging hierarchy — brand-guardian touches this but a dedicated skill may be worth it)
-- Buyer journey mapping skill (explicitly mentioned — could live here or in Strategy)
 
 ---
 
@@ -77,9 +77,9 @@ A living inventory of skills that exist today, organized by discipline, with gap
 - `figma:figma-swiftui` — SwiftUI ↔ Figma
 - `transitions-dev` — CSS transitions/micro-interactions
 - `frontend-design` — also relevant here for build-time aesthetic decisions
+- `code-review` — general-purpose correctness/readability/maintainability review, any code regardless of language or whether it's a diff or a snippet. Distinct from the installed `security-review` (vulnerability-focused) and `review` (GitHub PR workflow). Reuses `grill-me`'s Blocking Issues / Worth Considering / Direct Questions output format.
 
 **Need to build:**
-- Code review skill (explicitly mentioned — currently no dedicated reviewer)
 - Back-end architect skill (explicitly mentioned)
 - SEO/GEO skill (explicitly mentioned — technical + content crossover, may need a foot in both Content and Develop)
 - Front-end specialist skill distinct from `frontend-design` (that one's aesthetic-direction focused, not implementation-pattern focused)
@@ -109,9 +109,9 @@ A living inventory of skills that exist today, organized by discipline, with gap
 For the orchestrator to actually discover and use new skills as they're built (rather than hardcoding a skill list that goes stale), it needs some kind of registry it checks at runtime — e.g., a `skills-registry.md` or JSON manifest, tagged by discipline and use case, that `product-owner` reads before dispatching. This doc could evolve into that manifest, or feed one.
 
 **Priority build order (based on what's explicitly missing and most-cited):**
-1. `grill-me` (Product Management)
-2. Code review (Develop)
-3. Competitive audit (Strategy)
+1. ~~`grill-me` (Product Management)~~ — done
+2. ~~Code review (Develop)~~ — done
+3. Competitive audit (Strategy) — **next**
 4. SEO/GEO (Develop/Content crossover)
-5. Content mapping / buyer journey (Content)
+5. Content mapping (Content) — buyer-journey-builder shipped ahead of schedule, covers the journey-mapping half
 6. `product-owner` (Product Management) — built last, references everything above
