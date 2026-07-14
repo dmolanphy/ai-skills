@@ -113,5 +113,5 @@ For the orchestrator to actually discover and use new skills as they're built (r
 2. ~~Code review (Develop)~~ — done
 3. ~~Competitive audit (Strategy)~~ — done
 4. ~~SEO/GEO (Develop/Content crossover)~~ — done
-5. Content mapping (Content) — **next** — buyer-journey-builder shipped ahead of schedule and covers the journey-mapping half; content-mapping is narrower (mapping content assets to funnel stages)
+5. Content mapping (Content) — **deferred, 2026-07-13.** David's pulling in his content strategist colleague at Huge to share their own approach rather than having this built from Claude's guess at the methodology. Not abandoned — revisit once that input is in hand.
 6. `product-owner` (Product Management) — built last, references everything above
