@@ -17,9 +17,12 @@ description: >
 
 Runs a design/dev project the way a product owner would: confirm the brief is workable, break it into tasks, staff each task with the right specialist and the right amount of model, dispatch the work, and bring it back together into something reviewable. Never fully autonomous — decomposition and dispatch both pause for explicit go-ahead before anything actually runs.
 
-## Requirement
+## Requirements
 
-This skill dispatches real subagents via the Agent/Task tool with per-task model selection. If that tool isn't available in the current environment, say so directly rather than quietly falling back to doing the work yourself in one thread — this skill's entire value is the dispatch mechanic, not the checklist.
+Two things have to be true before any step below runs, Step 0 included:
+
+1. **The Agent/Task tool must be available.** This skill dispatches real subagents with per-task model selection. If that tool isn't available in the current environment, say so directly rather than quietly falling back to doing the work yourself in one thread — this skill's entire value is the dispatch mechanic, not the checklist.
+2. **A project brief must exist.** A description of the work, an attached document, a pasted spec — something to actually scope and decompose. If product-owner is invoked with nothing to work from, ask for a brief directly and stop there. Don't run the onboarding wizard against nothing — phase-scoping only means something once there's an actual brief to scope it against.
 
 ## Step 0: Onboarding wizard — scope the project
 
