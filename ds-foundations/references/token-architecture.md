@@ -1,6 +1,6 @@
 # Token Architecture & Naming
 
-This is the baseline structure for the user's DS Foundations files, distilled from the FEI and GEHC files and refined to current preferences. Treat the **names, structure, and scopes** as fixed conventions; treat the **values** as project-specific defaults to confirm or replace.
+This is the baseline structure for the user's DS Foundations files, distilled from the user's existing foundations files and refined to current preferences. Treat the **names, structure, and scopes** as fixed conventions; treat the **values** as project-specific defaults to confirm or replace.
 
 ## Table of contents
 - Naming conventions

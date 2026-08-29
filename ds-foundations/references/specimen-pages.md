@@ -1,10 +1,10 @@
 # Specimen Pages (Typography, Color, Grid)
 
-After the variables, text styles, and grid styles exist, build three specimen pages that document them — modeled on the user's FEI foundations file. Run each recipe through `use_figma`. **Run these only after the tokens/styles are created**, since they reference local variables and styles by name.
+After the variables, text styles, and grid styles exist, build three specimen pages that document them — modeled on the user's established foundations-file conventions. Run each recipe through `use_figma`. **Run these only after the tokens/styles are created**, since they reference local variables and styles by name.
 
 Pages are named `→ Typography`, `→ Color`, `→ Grid`. Everything that can be bound is bound: page titles use a text style + the on-brand color token, type specimens use the local text styles, section labels use the Eyebrow style, color swatches bind their fill to the color variable, grid frames bind to the grid styles, and divider/border lines bind to border tokens.
 
-## Shared layout constants (from FEI)
+## Shared layout constants
 - Spec frame width **2827**, white fill. Left/right margin **120** (content spans 120 → 2707).
 - **Header bar:** full-width rect `0,0,2827,181`, fill bound to `color/primary/brand-secondary`; page title at `x=120, y=70`, **bound to the `.Docs/Header` text style** (the private chrome style — see below), fill bound to **`text/on-brand`** (white on the brand bar).
 
@@ -119,7 +119,7 @@ for (const [label,secY,swY,names] of groups){ await section(frame,label,secY); f
 
 ## Grid page
 
-Three device frames side by side, each white, **bound to the matching grid style** (`Grid/Desktop`, `Grid/Tablet`, `Grid/Mobile`). The label is bound to `.Docs/Spec Detail`. The light-blue column overlays live inside an **auto-layout frame** (horizontal, `itemSpacing = gutter`) with a **1px border** (`border/default`) around it — mirroring FEI's bordered column container. Columns stretch to fill the container height via `layoutAlign = "STRETCH"`.
+Three device frames side by side, each white, **bound to the matching grid style** (`Grid/Desktop`, `Grid/Tablet`, `Grid/Mobile`). The label is bound to `.Docs/Spec Detail`. The light-blue column overlays live inside an **auto-layout frame** (horizontal, `itemSpacing = gutter`) with a **1px border** (`border/default`) around it — mirroring the standard bordered column container. Columns stretch to fill the container height via `layoutAlign = "STRETCH"`.
 
 ```js
 for (const s of ["Regular","Medium"]) await figma.loadFontAsync({family:"Inter",style:s});
@@ -144,4 +144,4 @@ await device("Tablet · 1024 · 8 col",  "Grid/Tablet", 1495, 1024,1024, 8,32,24
 await device("Mobile · 440 · 4 col",   "Grid/Mobile", 2574, 440, 956,  4,16,16);
 ```
 
-Match the device frames and margins/gutters to whatever the project's grid styles actually are. If the project defines a 1920 desktop too, add a fourth frame (FEI includes a `DesktopXL-1920`).
+Match the device frames and margins/gutters to whatever the project's grid styles actually are. If the project defines a 1920 desktop too, add a fourth frame (some foundations files include a `DesktopXL-1920`).

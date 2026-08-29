@@ -6,7 +6,7 @@ Build in small batches and read back what you created so you can catch failures 
 
 ## Table of contents
 - Inspect the file & detect the Cover
-- Create the Cover page (FEI/GEHC style)
+- Create the Cover page
 - Helpers (hex→rgb)
 - Create collections & modes
 - Create primitive variables (FLOAT / STRING / COLOR)
@@ -33,11 +33,11 @@ If `hasCover` is true, leave it untouched and proceed to tokens. If false, ask t
 
 ---
 
-## Create the Cover page (FEI/GEHC style)
+## Create the Cover page
 
-Only run this when there is **no** existing cover and you've gotten the title from the user. The look mirrors the FEI and GEHC files: a 1920×1080 black frame, the **Huge logo top-left**, and the title set very large in the primary font, light weight, white, anchored lower-left.
+Only run this when there is **no** existing cover and you've gotten the title from the user. The look is a 1920×1080 black frame with the title set very large in the primary font, light weight, white, anchored lower-left, plus an optional logo top-left.
 
-**The Huge logo is mandatory on every cover this skill creates.** It's bundled at `assets/huge-logo.png` (100×100, square corners, Huge pink `#ff0090`), with a ready-to-use base64 copy at `assets/huge-logo-base64.txt`. Before running this recipe, **read `assets/huge-logo-base64.txt` and substitute its contents** for `HUGE_LOGO_B64` in the code below. Do not resize the logo, round its corners, or swap it for a placeholder — place the PNG exactly as bundled at 100×100, top-left at x=53, y=42.
+**The logo is optional and comes from Step 0.** If the user supplied a logo image there, place it exactly as given at 100×100, square corners, top-left at x=53, y=42 — don't resize it, round its corners, or swap in a placeholder. If no logo was supplied, build the cover without one; leave the top-left corner empty rather than inventing a mark.
 
 ```js
 async function buildCover(title, primaryFamily, logoB64) {
@@ -51,16 +51,18 @@ async function buildCover(title, primaryFamily, logoB64) {
   frame.fills = [{ type: "SOLID", color: { r: 0, g: 0, b: 0 } }]; // black
   page.appendChild(frame);
 
-  // Huge logo — exact bundled PNG, 100×100, square corners, top-left. ALWAYS present.
-  const bytes = figma.base64Decode(logoB64); // Figma plugin API decodes base64 → Uint8Array
-  const image = figma.createImage(bytes);
-  const logo = figma.createRectangle();
-  logo.name = "Huge Logo";
-  logo.resize(100, 100);
-  logo.x = 53; logo.y = 42;
-  logo.cornerRadius = 0; // square corners — do not round
-  logo.fills = [{ type: "IMAGE", scaleMode: "FILL", imageHash: image.hash }];
-  frame.appendChild(logo);
+  // Logo — optional, only built if the user supplied one in Step 0.
+  if (logoB64) {
+    const bytes = figma.base64Decode(logoB64); // Figma plugin API decodes base64 → Uint8Array
+    const image = figma.createImage(bytes);
+    const logo = figma.createRectangle();
+    logo.name = "Cover Logo";
+    logo.resize(100, 100);
+    logo.x = 53; logo.y = 42;
+    logo.cornerRadius = 0; // square corners — do not round
+    logo.fills = [{ type: "IMAGE", scaleMode: "FILL", imageHash: image.hash }];
+    frame.appendChild(logo);
+  }
 
   // Title — large, light, white, lower-left. Fall back to Inter if the light weight isn't available.
   let family = primaryFamily, style = "Light";
@@ -84,11 +86,11 @@ async function buildCover(title, primaryFamily, logoB64) {
 
   return { page: page.name, title };
 }
-// HUGE_LOGO_B64 below is the full contents of assets/huge-logo-base64.txt
-// await buildCover("Design System: Foundations", "Inter", "HUGE_LOGO_B64");
+// logoB64 is the base64 contents of whatever logo file the user supplied in Step 0, or omitted/undefined if none was.
+// await buildCover("Design System: Foundations", "Inter", logoB64);
 ```
 
-Notes: if `figma.base64Decode` is unavailable on an older plugin version, decode manually into a `Uint8Array` before `createImage`. If the title is long enough to overflow at 200px, step the `fontSize` down (e.g. 160 / 120) until it fits the frame width. The logo itself never changes.
+Notes: if `figma.base64Decode` is unavailable on an older plugin version, decode manually into a `Uint8Array` before `createImage`. If the title is long enough to overflow at 200px, step the `fontSize` down (e.g. 160 / 120) until it fits the frame width.
 
 ---
 
