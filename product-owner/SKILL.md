@@ -21,9 +21,26 @@ Runs a design/dev project the way a product owner would: confirm the brief is wo
 
 This skill dispatches real subagents via the Agent/Task tool with per-task model selection. If that tool isn't available in the current environment, say so directly rather than quietly falling back to doing the work yourself in one thread — this skill's entire value is the dispatch mechanic, not the checklist.
 
+## Step 0: Onboarding wizard — scope the project
+
+Runs first, every time product-owner is invoked — including a repeat dispatch on a brief you've already run this through, since what's in scope can change between rounds.
+
+Before anything else, show the user a checkbox list of the project phases this dispatch might touch, and ask which ones to work on right now. Use the AskUserQuestion tool with multiSelect — this is a checkbox choice, not a single pick:
+
+- **Strategy & Research** — market/competitive landscape, buyer journey, brand positioning, user research (discipline: Strategy)
+- **Design** — design system, UI/UX, Figma work, accessibility, dev handoff specs (discipline: Design)
+- **Content** — copywriting, messaging, voice and tone (discipline: Content)
+- **Development** — code implementation, technical SEO/GEO, motion, code review (discipline: Develop)
+
+Product Management isn't a selectable phase — grill-me and this skill's own orchestration steps are always running in the background; they're how product-owner works, not a phase of the client's project.
+
+**This is a coarse filter, not the per-task approval.** Selecting phases here narrows what Step 2 even considers decomposing. Step 4's per-task Deploy now / Defer / Skip still runs afterward, on whatever tasks actually got decomposed within the selected phases. Two layers of control: this step decides what's on the table at all; Step 4 decides what actually gets dispatched right now.
+
+**If decomposition surfaces a task in a phase that wasn't selected, don't silently drop it or silently include it.** Flag it explicitly when presenting the dispatch plan in Step 4 — say what it is, which phase it falls under, and ask whether to add that phase to scope for this round or leave it out. Same discipline this library uses everywhere else: nothing falls out of scope quietly.
+
 ## Step 1: Clarity check (before decomposition)
 
-Distinct from `grill-me`, and runs first. Read the brief and check whether there's enough to actually decompose into tasks:
+Distinct from `grill-me`. Runs immediately after Step 0's scoping — read the brief and check whether there's enough to actually decompose into tasks:
 
 - **Audience** — is there a real, named audience, or is it implicit/generic?
 - **Success criteria** — is "done" defined concretely, or is it vibes?
@@ -36,7 +53,7 @@ If something critical is missing, ask directly — don't guess and don't decompo
 
 Break the brief into discrete tasks. For each task, determine:
 
-1. **Discipline** — Product Management / Strategy / Content / Design / Develop
+1. **Discipline** — Product Management / Strategy / Content / Design / Develop. Only decompose tasks whose discipline falls within the phases selected in Step 0 — if a task in an unselected phase surfaces during decomposition, flag it per Step 0's rule rather than quietly including or dropping it.
 2. **Matched skill** — check `skills-registry.md` (the single source of truth) by discipline/subcategory/trigger_summary. Match against the registry, not against live skill descriptions — a miscategorization gets fixed once in the registry, not re-guessed every run.
    - **If no active row matches closely, say so explicitly.** Don't invent a skill call or silently do the work yourself instead. Flag it as a gap — and if it's not already in the backlog section of `skills-roadmap.md`, offer to add it there before proceeding, so gaps surfaced mid-project don't get lost the way the original backlog almost did.
 3. **Model assignment** — by task nature, not a fixed rule per discipline:
@@ -55,6 +72,7 @@ Show the user, in one place:
 
 - The task list, with discipline, matched skill, and assigned model per task
 - Any tasks with no matched skill, flagged as gaps
+- Any tasks that fell outside the phases selected in Step 0, flagged as out-of-scope-for-now rather than silently included or dropped
 - The execution plan — which tasks run in parallel, which run sequentially and why (dependency chain)
 
 **Get a per-task decision, not one blanket approval.** For each task, the user picks one of three states — use the AskUserQuestion tool (multiSelect for the "deploy now" pass) rather than assuming a single yes/no covers the whole batch:
