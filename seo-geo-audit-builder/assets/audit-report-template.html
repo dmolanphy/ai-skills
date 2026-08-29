@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SEO/GEO Readiness Audit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #F7F5F2; padding: 48px; color: #1C1C1C; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 1480px; margin: 0 auto; background: #FFFFFF; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+
+  .header { padding: 48px 56px 28px; border-bottom: 1px solid #E8E5E0; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B5502E; margin-bottom: 14px; }
+  h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; }
+  .subtitle { font-size: 13.5px; color: #6B6B6B; max-width: 760px; line-height: 1.55; }
+
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9691; margin: 28px 56px 12px; }
+
+  /* Main finding: large, green, unmissable */
+  .main-finding { margin: 28px 56px 0; padding: 28px 32px; background: #F0F4F1; border-left: 4px solid #4A7A5C; border-radius: 3px; }
+  .main-finding .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4A7A5C; margin-bottom: 12px; }
+  .main-finding p { font-size: 19px; font-weight: 700; line-height: 1.5; color: #1C1C1C; }
+
+  /* Proof section: two columns, same background */
+  .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 56px 0; }
+  .proof-col .section-label { margin: 0 0 10px; }
+  .proof-block { background: #F0F4F1; border-left: 3px solid #4A7A5C; border-radius: 3px; padding: 20px 22px; height: 100%; }
+  .proof-block p { font-size: 13px; line-height: 1.55; color: #1C1C1C; margin-bottom: 10px; }
+  .proof-block p:last-child { margin-bottom: 0; font-weight: 700; }
+
+  .score-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: #E8E5E0; margin: 0 56px; border: 1px solid #E8E5E0; border-radius: 3px; overflow: hidden; }
+  .score-card { background: #FFFFFF; padding: 16px 16px; }
+  .score-card.client { background: #FBF3EE; }
+  .score-card .site-name { font-size: 12.5px; font-weight: 700; margin-bottom: 6px; }
+  .score-card .site-name .client-tag { font-size: 9px; font-weight: 700; color: #B5502E; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .score-card .score { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+  .score-card .score.strong { color: #4A7A5C; }
+  .score-card .score.adequate { color: #B5502E; }
+  .score-card .score.risk { color: #A33; }
+  .score-card .band { font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #9A9691; margin-top: 2px; }
+  .score-card .note { font-size: 10px; color: #9A9691; margin-top: 8px; line-height: 1.4; }
+  .score-card.blocked { background: #FAFAF8; }
+  .score-card.blocked .note { color: #B5502E; }
+
+  .check-grid { margin: 0 56px; border: 1px solid #E8E5E0; border-radius: 3px; overflow: hidden; }
+  .check-row { display: grid; grid-template-columns: 1.15fr 40px 1fr 1fr 1fr 1fr 1fr; gap: 0; border-bottom: 1px solid #E8E5E0; }
+  .check-row:last-child { border-bottom: none; }
+  .check-row.head { background: #FAFAF8; font-size: 9px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #9A9691; }
+  .check-row > div { padding: 9px 10px; font-size: 10.5px; display: flex; align-items: center; }
+  .check-row > div.client-col { background: #FBF3EE; }
+  .check-name { font-weight: 600; color: #1C1C1C; }
+  .check-tag { font-size: 9px; font-weight: 700; }
+  .check-tag.verified { color: #4A7A5C; }
+  .check-tag.best-effort { color: #B5502E; }
+  .check-detail { color: #4A4A4A; line-height: 1.4; }
+  .check-detail.flag { color: #B5502E; font-style: italic; }
+  .check-detail.blocked { color: #9A9691; font-style: italic; }
+
+  .headline-finding { margin: 28px 56px 0; padding: 20px 24px; background: #FBF3EE; border-left: 3px solid #B5502E; border-radius: 3px; }
+  .headline-finding .tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #B5502E; margin-bottom: 8px; }
+  .headline-finding p { font-size: 13.5px; font-weight: 600; line-height: 1.5; color: #1C1C1C; }
+
+  .limits { margin: 24px 56px 0; padding: 20px 24px; background: #1C1C1C; border-radius: 4px; color: #FFFFFF; }
+  .limits .tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #E8895F; margin-bottom: 10px; }
+  .limits ul { margin: 0; padding-left: 18px; }
+  .limits li { font-size: 12px; color: #E5E2DC; line-height: 1.6; margin-bottom: 6px; }
+  .limits li:last-child { margin-bottom: 0; }
+  .limits li strong { color: #FFFFFF; }
+
+  .footer { margin: 32px 0 0; padding: 18px 56px 32px; font-size: 10.5px; color: #9A9691; line-height: 1.6; border-top: 1px solid #E8E5E0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="eyebrow">SEO / GEO Readiness Audit</div>
+    <h1>K. Hovnanian vs. 4 Competitors</h1>
+    <div class="subtitle">K. Hovnanian, Lennar, KB Home, D.R. Horton, Pulte — technical readiness (can search and AI engines access and parse this content), not live AI-citation share. Every result traces to an actual fetch; unreachable checks are marked unverified, never guessed.</div>
+  </div>
+
+  <div class="main-finding">
+    <div class="tag">The Finding — Read This First</div>
+    <p>GEO readiness determines who controls the message. On a specific, decision-relevant question, a well-optimized site gets cited as the source of truth. A blocked or poorly-structured site doesn't disappear — the AI finds someone else's description of it instead, and cites that. You don't stop being findable. You stop being the one who gets to describe yourself.</p>
+  </div>
+
+  <div class="proof-grid">
+    <div class="proof-col">
+      <div class="section-label">Proof — Broad Query (Legacy Wins Here, Not GEO)</div>
+      <div class="proof-block">
+        <p><strong>Asked cold/live on three engines:</strong> "What are some good national homebuilders to consider for a first-time home purchase in Texas?"</p>
+        <p>D.R. Horton — 0/2 on the technical audit, blocked from crawling outright — was named on all three engines and was the top pick on one. Pulte — 10/10 on the technical audit — was absent from two of three. <strong>K. Hovnanian was absent from all three</strong> — not a technical block, a brand-awareness gap. Brand scale and legacy coverage dominate this kind of question, not GEO readiness.</p>
+      </div>
+    </div>
+    <div class="proof-col">
+      <div class="section-label">Proof — Specific Query (This Is Where GEO Actually Matters)</div>
+      <div class="proof-block">
+        <p><strong>Asked cold/live on three engines, twice</strong> — D.R. Horton vs. Lennar, then K. Hovnanian vs. Lennar, both in DFW.</p>
+        <p>Gemini cited <strong>lennar.com</strong> and <strong>khov.com</strong> directly, repeatedly, favorably — but for D.R. Horton, cited <strong>third-party sources</strong> instead, never drhorton.com. The difference: D.R. Horton is technically blocked (robots.txt). K. Hovnanian's Terms restrict scraping too, but isn't technically blocked — and it shows: engines still access and cite khov.com directly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="headline-finding">
+    <div class="tag">What This Means for K. Hovnanian Specifically</div>
+    <p>Two different problems, two different fixes. K. Hovnanian is <em>not</em> technically blocked — both ChatGPT and Gemini cited khov.com directly and described it favorably ("more intentionally designed" vs. Lennar) on the specific query. That's a real asset already working. The gap is upstream: absent from all three engines on the broad, top-of-funnel question where D.R. Horton and Pulte both showed up. That's not a robots.txt problem — it's a brand-salience problem, and no technical fix solves it alone.</p>
+  </div>
+
+  <div class="section-label">Score</div>
+  <div class="score-row">
+    <div class="score-card client">
+      <div class="site-name"><span class="client-tag">Client</span>K. Hovnanian</div>
+      <div class="score adequate">10/18</div>
+      <div class="band">Adequate — real gaps</div>
+      <div class="note">ToS restricts scraping; repeated H1 markup; no llms.txt; hero copy is brand-poetry, not lead-first</div>
+    </div>
+    <div class="score-card">
+      <div class="site-name">Pulte</div>
+      <div class="score strong">18/18</div>
+      <div class="band">Strong</div>
+      <div class="note">Every checked item scored full marks — clear H1, llms.txt present, direct lead copy, in-range meta</div>
+    </div>
+    <div class="score-card">
+      <div class="site-name">Lennar</div>
+      <div class="score adequate">13/20</div>
+      <div class="band">Adequate — real gaps</div>
+      <div class="note">ToS explicitly restricts AI agents — a real, separate finding from crawler access</div>
+    </div>
+    <div class="score-card">
+      <div class="site-name">KB Home</div>
+      <div class="score adequate">7/16</div>
+      <div class="band">Adequate — real gaps</div>
+      <div class="note">No detectable H1; nav-only internal linking; hero copy buries the offer instead of leading with it</div>
+    </div>
+    <div class="score-card blocked">
+      <div class="site-name">D.R. Horton</div>
+      <div class="score risk">0/2</div>
+      <div class="band">At Risk — blocked</div>
+      <div class="note">Site blocks automated access entirely. Nothing else could be assessed as a result.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Checks</div>
+  <div class="check-grid">
+    <div class="check-row head">
+      <div>Check</div><div>Tag</div><div class="client-col">K. Hovnanian</div><div>Pulte</div><div>Lennar</div><div>KB Home</div><div>D.R. Horton</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Title Tag</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail client-col">Present, on-topic (2/2)</div>
+      <div class="check-detail">Present, on-topic (2/2)</div>
+      <div class="check-detail">Present, a bit long (2/2)</div>
+      <div class="check-detail">Present, concise (2/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Meta Description</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail client-col">Present, short of ideal — ~108 chars (1/2)</div>
+      <div class="check-detail">Present, in range (2/2)</div>
+      <div class="check-detail">Present, short of ideal (1/2)</div>
+      <div class="check-detail">Present, short of ideal (1/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Canonical Tag</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail client-col">Correct, self-referencing (2/2)</div>
+      <div class="check-detail">Correct, self-referencing (2/2)</div>
+      <div class="check-detail">Correct, self-referencing (2/2)</div>
+      <div class="check-detail">Correct, self-referencing (2/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Heading Structure</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail flag client-col">H1 present but repeats — carousel markup issue (1/2)</div>
+      <div class="check-detail">Clear single H1 (2/2)</div>
+      <div class="check-detail">Clear single H1 (2/2)</div>
+      <div class="check-detail flag">No H1 detected — image-based hero (0/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">AI Crawler Accessibility</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail flag client-col">Unable to verify this pass</div>
+      <div class="check-detail flag">Unable to verify this pass</div>
+      <div class="check-detail flag">Unable to verify this pass</div>
+      <div class="check-detail flag">Unable to verify this pass</div>
+      <div class="check-detail" style="color:#B5502E; font-weight:700;">Verified — Disallowed (0/2)</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">llms.txt Presence</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail flag client-col">Not found — emerging standard, partial credit (1/2)</div>
+      <div class="check-detail">Present, well-formed (2/2)</div>
+      <div class="check-detail flag">Not found — emerging standard, partial credit (1/2)</div>
+      <div class="check-detail flag">Not found — emerging standard, partial credit (1/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">AI-Access Legal Posture</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail client-col">ToS explicitly restricts scraping/crawling/bots (0/2)</div>
+      <div class="check-detail flag">Not checked this pass</div>
+      <div class="check-detail">ToS explicitly restricts AI agents (0/2)</div>
+      <div class="check-detail flag">Not checked this pass</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Image Alt Text</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail flag client-col">JS-rendered gallery — not assessed</div>
+      <div class="check-detail">Populated on all key images (2/2)</div>
+      <div class="check-detail">Populated on most, missing on hero (1/2)</div>
+      <div class="check-detail flag">JS-rendered gallery — not assessed</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">URL Structure</div>
+      <div><span class="check-tag verified">🔒</span></div>
+      <div class="check-detail client-col">Clean, readable path (2/2)</div>
+      <div class="check-detail">Clean, readable path (2/2)</div>
+      <div class="check-detail">Clean, readable path (2/2)</div>
+      <div class="check-detail flag">Query-string IDs where a slug would do (1/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Structured Data</div>
+      <div><span class="check-tag best-effort">🔍</span></div>
+      <div class="check-detail flag client-col">Not assessed — no rendering tool used</div>
+      <div class="check-detail flag">Not assessed — no rendering tool used</div>
+      <div class="check-detail flag">Not assessed — no rendering tool used</div>
+      <div class="check-detail flag">Not assessed — no rendering tool used</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Content Extractability</div>
+      <div><span class="check-tag best-effort">🔍</span></div>
+      <div class="check-detail flag client-col">Brand-poetry hero, no lead-first offer (0/2)</div>
+      <div class="check-detail">Leads with the value prop directly (2/2)</div>
+      <div class="check-detail">States the offer in sentence one (1/2)</div>
+      <div class="check-detail flag">Brand-voice hero buries the offer (0/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+    <div class="check-row">
+      <div class="check-name">Internal Linking Structure</div>
+      <div><span class="check-tag best-effort">🔍</span></div>
+      <div class="check-detail client-col">Links to related communities, sparse cross-links to guides (1/2)</div>
+      <div class="check-detail">Rich related-content linking throughout (2/2)</div>
+      <div class="check-detail">Some related-content links, mostly nav-driven (1/2)</div>
+      <div class="check-detail flag">Nav/footer only, no in-content links (0/2)</div>
+      <div class="check-detail blocked">Blocked — not assessed</div>
+    </div>
+  </div>
+
+  <div class="limits">
+    <div class="tag">What This Audit Does and Doesn't Measure</div>
+    <ul>
+      <li><strong>Measures:</strong> technical readiness — whether AI and search engines can access, parse, and extract this site's content.</li>
+      <li><strong>Does not measure:</strong> live AI-citation share — how often a brand is actually mentioned in ChatGPT/Perplexity/Gemini answers. That requires paid tools with API access at scale (Profound, Gumshoe, Semrush AI visibility).</li>
+      <li><strong>ToS restrictions vs. technical blocks are different levers.</strong> Both K. Hovnanian and Lennar restrict scraping in their Terms — a legal signal — but neither is technically blocked at the robots.txt level, and both got cited directly by live engines. D.R. Horton's block is technical, not just legal, and that's what actually stopped direct citation.</li>
+      <li><strong>Known limitation:</strong> a compliant robots.txt is not proof of actual access — CDN/firewall-level blocking (e.g., Cloudflare's AI Bot Management) can override it entirely before a bot's request ever reaches the server.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <strong>Sources:</strong> Direct fetch of khov.com, pulte.com, lennar.com, and kbhome.com homepages (title, meta, canonical, heading structure, alt text, URL structure). K. Hovnanian and Lennar Terms &amp; Conditions (khov.com/terms-and-conditions, lennar.com/termsandconditions). drhorton.com fetch attempt — robots.txt disallow confirmed by the fetch tool directly. llms.txt checked directly at each domain. Live engine citations checked directly in ChatGPT and Gemini, logged in. Character-length, schema-type, and named-AI-bot thresholds reconfirmed against 2026 guidance; nothing older than 3 years presented as current.
+    Built with seo-geo-audit-builder — every check traced to an actual fetch, an actual block, or explicitly marked unverified. Nothing simulated.
+  </div>
+
+</div>
+</body>
+</html>

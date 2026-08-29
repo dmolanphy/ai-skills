@@ -27,6 +27,8 @@ Machine-readable index for `product-owner` to match tasks to skills. Update this
 | design:user-research | Strategy | research planning | Design interview guides, usability tests, surveys, research questions | active |
 | design:research-synthesis | Strategy | research synthesis | Synthesize interviews/surveys/tickets into themes, segments, prioritized recommendations | active |
 | competitive-audit | Strategy | competitive & market analysis | Market landscape + how competitors frame the problem and describe their solutions; discovers competitors/adjacent industries when unknown, pauses for approval before deep research (strategic/market focus, not UX or brand-voice) | active |
+| market-landscape-builder | Strategy | market/opportunity sizing | Evidence-backed market/category landscape briefing — why the market matters now, what's broken about how it's served, opportunity size, underserved gap; triangulates across 5 evidence lenses (attitudinal, behavioral, market sizing, economic, competitive artifact) | active |
+| seo-geo-audit-builder | Strategy | SEO/GEO technical diagnostic | Scored, verifiable technical SEO/GEO readiness audit vs. named competitors — real fetches only, never simulated citation scores; includes a live cross-engine citation test (Live Insight Pull). Third leg alongside market-landscape-builder and buyer-journey-builder — a sellable diagnostic, distinct from `seo-geo` (Develop), which is build-phase requirements/fixes, not a strategy deliverable | active |
 | gtm-strategy | Strategy | launch strategy | Go-to-market sequencing and launch planning | planned |
 
 ## Content
