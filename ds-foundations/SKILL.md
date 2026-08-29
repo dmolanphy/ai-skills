@@ -2,17 +2,15 @@
 name: ds-foundations
 description: >
   Stand up a foundational design-system Figma file at the start of a new design project —
-  tokens/variables (typography, color, spacing, radius), semantic tokens, layout grids, and
-  text styles, built directly into a Figma file the user points to. Supports two foundation
-  types: the user's own custom system, or a shadcn/ui-aligned token structure (CSS-variable-style
-  semantic tokens, Tailwind-aligned typography). Use this skill whenever the user kicks off a
-  new project and needs baseline design foundations, or says things like "set up a foundations
-  file," "create the design tokens," "start the DS foundations," "build out our type and color
-  tokens," "make the grid and text styles," "set up shadcn tokens in Figma," "build a shadcn
-  foundation," or points to a Figma foundations file and asks to populate it — even if they
-  don't say the word "tokens." Always use this skill for any request about establishing baseline
-  design-system tokens, variables, grids, or text styles in Figma at project kickoff, regardless
-  of which foundation type is named.
+  tokens/variables (typography, color, spacing, radius), semantic tokens, layout grids, and text
+  styles, built directly into a Figma file. Supports two foundation types: the user's own custom
+  system, or a shadcn/ui-aligned token structure (CSS-variable-style semantic tokens, Tailwind-aligned
+  typography). Use whenever the user kicks off a new project needing baseline design foundations, or
+  says things like "set up a foundations file," "create the design tokens," "start the DS foundations,"
+  "build out type and color tokens," "make the grid and text styles," "set up shadcn tokens in Figma,"
+  "build a shadcn foundation," or points to a Figma foundations file to populate — even without saying
+  "tokens." Always use for any request to establish baseline design-system tokens, variables, grids, or
+  text styles in Figma at kickoff, regardless of foundation type.
 ---
 
 # Design System Foundations
