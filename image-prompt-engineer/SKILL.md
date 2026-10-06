@@ -1,14 +1,11 @@
 ---
 name: image-prompt-engineer
 description: >
-  Craft precise, layered prompts for AI image generation (Midjourney, DALL-E, Stable
-  Diffusion, Flux, Firefly). Use this skill whenever the task involves generating
-  reference imagery, moodboard fills, concept visuals, style tiles, or any AI-generated
-  photography or illustration — including requests like "generate an image of",
-  "I need visuals for this concept", "make reference shots for the moodboard", or
-  "write me a Midjourney prompt". Trigger even when the user just describes a visual
-  idea they want to see — translating vague visual intent into precise prompt language
-  is exactly what this skill does.
+  Crafts precise, layered prompts for AI image generation (Midjourney, DALL-E, Stable
+  Diffusion, Flux, Firefly). Use whenever the task involves generating reference imagery,
+  moodboard fills, concept visuals, style tiles, or AI-generated photography or illustration:
+  "generate an image of", "I need visuals for this concept", "make reference shots for the
+  moodboard", "write me a Midjourney prompt", or when the user simply describes a visual idea.
 ---
 
 # Image Prompt Engineer
@@ -51,10 +48,16 @@ prompt describes a photographable one.
 - For moodboard/style-tile batches: hold layers 3–5 constant across the set and vary
   only subject/environment. Consistency across a board comes from shared light and
   grade, not shared subjects.
-- Offer 2–3 prompt variants with different emphasis when the goal is exploratory
-  (David works options-first); one precise prompt when the target is locked.
+- Offer 2–3 prompt variants with different emphasis when the goal is exploratory; one
+  precise prompt when the target is locked.
+- **Platform unspecified?** Don't ask. Deliver one natural-language prompt that works
+  anywhere, plus a Midjourney variant with parameters.
+- **Output format:** each prompt in its own copyable code block, with a one-line note on
+  what each variant emphasizes.
 
 ## Platform notes
+
+These tools change often; verify parameters against current platform docs.
 
 - **Midjourney** — parameters (`--ar`, `--style`, `--chaos`), multi-prompt weighting.
 - **DALL-E / Flux** — full natural-language sentences; describe, don't keyword-stack.

@@ -1,16 +1,13 @@
 ---
 name: grill-me
 description: >
-  Pressure-tests a project brief or a proposed solution before work starts or ships.
-  Use this whenever the user says "grill me on this," "stress-test this," "poke holes
-  in this," "what am I missing," "play devil's advocate," or asks for critical feedback
-  before committing to a direction. Also use proactively when a brief seems to be
-  accepted without scrutiny, or when a finished deliverable (design, code, doc, plan)
-  is about to be presented or shipped without having been challenged first. Also called
-  internally by product-owner at two checkpoints — right after a brief is decomposed
-  into tasks, and right before subagent outputs are synthesized into a final
-  deliverable. Covers two distinct modes: brief-grilling (is this the right problem)
-  and solution-grilling (does this actually solve it) — do not conflate them.
+  Pressure-tests a project brief or a proposed solution before work starts or ships. Use when
+  the user says "grill me on this," "stress-test this," "poke holes in this," "what am I
+  missing," "play devil's advocate," or wants critical feedback before committing to a
+  direction. Also use proactively when a brief is accepted without scrutiny or a finished
+  deliverable (design, code, doc, plan) is about to be presented or shipped unchallenged.
+  Two modes, never conflated: brief-grilling (is this the right problem) and solution-grilling
+  (does this actually solve it). Called by product-owner at its two checkpoints.
 ---
 
 # Grill Me
@@ -19,12 +16,12 @@ A structured stress-test for two different moments in a project: before you star
 
 ## Step 1: Detect which mode applies
 
-- **Brief mode** — the input is a problem statement, project brief, task description, or plan that hasn't been executed yet. Trigger phrases: "grill me on this brief," "before we start," "is this the right approach," or product-owner calling immediately after task decomposition.
-- **Solution mode** — the input is a finished or near-finished deliverable: a design, a piece of code, a document, a strategy doc, a plan someone's about to present. Trigger phrases: "grill me on this," "poke holes in this," "before I ship this," or product-owner calling right before final synthesis.
+- **Brief mode** — the input is a problem statement, brief, task description, or plan not yet executed (includes product-owner calling right after task decomposition).
+- **Solution mode** — the input is a finished or near-finished deliverable: a design, code, document, strategy, or plan about to be presented (includes product-owner calling right before final synthesis).
 
-If it's ambiguous which mode applies (e.g., the user just pastes something with no context), ask — don't guess. Getting this wrong means asking the wrong questions entirely.
+If it's ambiguous which applies (e.g., something pasted with no context), ask — don't guess. Getting this wrong means asking the wrong questions entirely.
 
-If asked to grill something that touches both (e.g., "here's the brief and my draft response"), run both modes and clearly separate the two sets of output.
+If the input touches both (e.g., "here's the brief and my draft response"), run both modes and clearly separate the two sets of output.
 
 ## Step 2: Run the relevant question set
 
