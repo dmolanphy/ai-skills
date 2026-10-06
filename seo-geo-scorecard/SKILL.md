@@ -62,7 +62,7 @@ Run the identical process on every named competitor and present side by side; a 
 
 ### 5. Assemble
 
-Default to HTML using `assets/audit-report-template.html` (same visual family as `market-landscape-builder` and `buyer-journey-builder`: grid layout, sparing accent, dark closing block). Include: the score prominently at the top; all 12 checks with Verified/Best-effort tags; the competitor comparison as its own section; the Live Insight Pull as its own clearly separated, unscored section; and a closing section stating what the audit measured and did not, including which thresholds were reconfirmed.
+Default to HTML using `assets/audit-report-template.html` (fill its [bracketed] placeholders; same visual family as `market-landscape-builder` and `buyer-journey-builder`: grid layout, sparing accent, dark closing block). Include: the score prominently at the top; all 12 checks with Verified/Best-effort tags; the competitor comparison as its own section; the Live Insight Pull as its own clearly separated, unscored section; and a closing section stating what the audit measured and did not, including which thresholds were reconfirmed.
 
 ## Pitfalls
 

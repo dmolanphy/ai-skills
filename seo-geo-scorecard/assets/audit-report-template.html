@@ -71,12 +71,15 @@
 </style>
 </head>
 <body>
+<!-- TEMPLATE: replace every [bracketed] placeholder with audited results. Keep the layout and CSS.
+     Score cards and check columns assume the client plus up to 4 other sites (the skill caps competitors at 3; delete unused columns/cards).
+     Bands: >=79% Strong, 50-78% Adequate, <50% At Risk. Compute with scripts/score.py. -->
 <div class="page">
 
   <div class="header">
     <div class="eyebrow">SEO / GEO Readiness Audit</div>
-    <h1>K. Hovnanian vs. 4 Competitors</h1>
-    <div class="subtitle">K. Hovnanian, Lennar, KB Home, D.R. Horton, Pulte — technical readiness (can search and AI engines access and parse this content), not live AI-citation share. Every result traces to an actual fetch; unreachable checks are marked unverified, never guessed.</div>
+    <h1>[Client] vs. [N] Competitors</h1>
+    <div class="subtitle">[List of sites audited] — technical readiness (can search and AI engines access and parse this content), not live AI-citation share. Every result traces to an actual fetch; unreachable checks are marked unverified, never guessed.</div>
   </div>
 
   <div class="main-finding">
@@ -88,170 +91,122 @@
     <div class="proof-col">
       <div class="section-label">Proof — Broad Query (Legacy Wins Here, Not GEO)</div>
       <div class="proof-block">
-        <p><strong>Asked cold/live on three engines:</strong> "What are some good national homebuilders to consider for a first-time home purchase in Texas?"</p>
-        <p>D.R. Horton — 0/2 on the technical audit, blocked from crawling outright — was named on all three engines and was the top pick on one. Pulte — 10/10 on the technical audit — was absent from two of three. <strong>K. Hovnanian was absent from all three</strong> — not a technical block, a brand-awareness gap. Brand scale and legacy coverage dominate this kind of question, not GEO readiness.</p>
+        <p><strong>Asked cold/live on [N] engines:</strong> "[Broad, brand-recall question]"</p>
+        <p>[Which brands surfaced, in what order, under what name; note any technically blocked leader that still appeared on brand equity alone. State that brand scale and legacy coverage dominate this kind of question.]</p>
       </div>
     </div>
     <div class="proof-col">
       <div class="section-label">Proof — Specific Query (This Is Where GEO Actually Matters)</div>
       <div class="proof-block">
-        <p><strong>Asked cold/live on three engines, twice</strong> — D.R. Horton vs. Lennar, then K. Hovnanian vs. Lennar, both in DFW.</p>
-        <p>Gemini cited <strong>lennar.com</strong> and <strong>khov.com</strong> directly, repeatedly, favorably — but for D.R. Horton, cited <strong>third-party sources</strong> instead, never drhorton.com. The difference: D.R. Horton is technically blocked (robots.txt). K. Hovnanian's Terms restrict scraping too, but isn't technically blocked — and it shows: engines still access and cite khov.com directly.</p>
+        <p><strong>Asked cold/live on [N] engines:</strong> "[Specific, retrieval-dependent question]"</p>
+        <p>[Per engine: which sites were cited directly, and which brands were described via third-party sources instead (name the substitute source). Name the mechanism: technical block vs. ToS restriction vs. thin content.]</p>
       </div>
     </div>
   </div>
 
   <div class="headline-finding">
-    <div class="tag">What This Means for K. Hovnanian Specifically</div>
-    <p>Two different problems, two different fixes. K. Hovnanian is <em>not</em> technically blocked — both ChatGPT and Gemini cited khov.com directly and described it favorably ("more intentionally designed" vs. Lennar) on the specific query. That's a real asset already working. The gap is upstream: absent from all three engines on the broad, top-of-funnel question where D.R. Horton and Pulte both showed up. That's not a robots.txt problem — it's a brand-salience problem, and no technical fix solves it alone.</p>
+    <div class="tag">What This Means for [Client] Specifically</div>
+    <p>[Is the client's gap technical, brand-salience, or content? Name what is already working and what no technical fix alone can solve.]</p>
   </div>
 
   <div class="section-label">Score</div>
   <div class="score-row">
     <div class="score-card client">
-      <div class="site-name"><span class="client-tag">Client</span>K. Hovnanian</div>
-      <div class="score adequate">10/18</div>
-      <div class="band">Adequate — real gaps</div>
-      <div class="note">ToS restricts scraping; repeated H1 markup; no llms.txt; hero copy is brand-poetry, not lead-first</div>
+      <div class="site-name"><span class="client-tag">Client</span>[Client]</div>
+      <div class="score adequate">[points]/[max]</div>
+      <div class="band">[Strong / Adequate, real gaps / At Risk] ([percent]%)</div>
+      <div class="note">[One line: the biggest driver of this score]</div>
     </div>
     <div class="score-card">
-      <div class="site-name">Pulte</div>
-      <div class="score strong">18/18</div>
-      <div class="band">Strong</div>
-      <div class="note">Every checked item scored full marks — clear H1, llms.txt present, direct lead copy, in-range meta</div>
+      <div class="site-name">[Competitor A]</div>
+      <div class="score adequate">[points]/[max]</div>
+      <div class="band">[Strong / Adequate, real gaps / At Risk] ([percent]%)</div>
+      <div class="note">[One line: the biggest driver of this score]</div>
     </div>
     <div class="score-card">
-      <div class="site-name">Lennar</div>
-      <div class="score adequate">13/20</div>
-      <div class="band">Adequate — real gaps</div>
-      <div class="note">ToS explicitly restricts AI agents — a real, separate finding from crawler access</div>
+      <div class="site-name">[Competitor B]</div>
+      <div class="score adequate">[points]/[max]</div>
+      <div class="band">[Strong / Adequate, real gaps / At Risk] ([percent]%)</div>
+      <div class="note">[One line: the biggest driver of this score]</div>
     </div>
     <div class="score-card">
-      <div class="site-name">KB Home</div>
-      <div class="score adequate">7/16</div>
-      <div class="band">Adequate — real gaps</div>
-      <div class="note">No detectable H1; nav-only internal linking; hero copy buries the offer instead of leading with it</div>
+      <div class="site-name">[Competitor C]</div>
+      <div class="score adequate">[points]/[max]</div>
+      <div class="band">[Strong / Adequate, real gaps / At Risk] ([percent]%)</div>
+      <div class="note">[One line: the biggest driver of this score]</div>
     </div>
-    <div class="score-card blocked">
-      <div class="site-name">D.R. Horton</div>
-      <div class="score risk">0/2</div>
-      <div class="band">At Risk — blocked</div>
-      <div class="note">Site blocks automated access entirely. Nothing else could be assessed as a result.</div>
+    <div class="score-card">
+      <div class="site-name">[Competitor D]</div>
+      <div class="score adequate">[points]/[max]</div>
+      <div class="band">[Strong / Adequate, real gaps / At Risk] ([percent]%)</div>
+      <div class="note">[One line: the biggest driver of this score]</div>
     </div>
   </div>
 
   <div class="section-label">Checks</div>
   <div class="check-grid">
     <div class="check-row head">
-      <div>Check</div><div>Tag</div><div class="client-col">K. Hovnanian</div><div>Pulte</div><div>Lennar</div><div>KB Home</div><div>D.R. Horton</div>
+      <div>Check</div><div>Tag</div><div class="client-col">[Client]</div><div>[Competitor A]</div><div>[Competitor B]</div><div>[Competitor C]</div><div>[Competitor D]</div>
     </div>
     <div class="check-row">
       <div class="check-name">Title Tag</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail client-col">Present, on-topic (2/2)</div>
-      <div class="check-detail">Present, on-topic (2/2)</div>
-      <div class="check-detail">Present, a bit long (2/2)</div>
-      <div class="check-detail">Present, concise (2/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">Present, [length/quality note] ([0–2]/2)</div><div class="check-detail">Present, [length/quality note] ([0–2]/2)</div><div class="check-detail">Present, [length/quality note] ([0–2]/2)</div><div class="check-detail">Present, [length/quality note] ([0–2]/2)</div><div class="check-detail">Present, [length/quality note] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">Meta Description</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail client-col">Present, short of ideal — ~108 chars (1/2)</div>
-      <div class="check-detail">Present, in range (2/2)</div>
-      <div class="check-detail">Present, short of ideal (1/2)</div>
-      <div class="check-detail">Present, short of ideal (1/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">Present, [length note] ([0–2]/2)</div><div class="check-detail">Present, [length note] ([0–2]/2)</div><div class="check-detail">Present, [length note] ([0–2]/2)</div><div class="check-detail">Present, [length note] ([0–2]/2)</div><div class="check-detail">Present, [length note] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">Canonical Tag</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail client-col">Correct, self-referencing (2/2)</div>
-      <div class="check-detail">Correct, self-referencing (2/2)</div>
-      <div class="check-detail">Correct, self-referencing (2/2)</div>
-      <div class="check-detail">Correct, self-referencing (2/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[Correct / missing / wrong target] ([0–2]/2)</div><div class="check-detail">[Correct / missing / wrong target] ([0–2]/2)</div><div class="check-detail">[Correct / missing / wrong target] ([0–2]/2)</div><div class="check-detail">[Correct / missing / wrong target] ([0–2]/2)</div><div class="check-detail">[Correct / missing / wrong target] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">Heading Structure</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail flag client-col">H1 present but repeats — carousel markup issue (1/2)</div>
-      <div class="check-detail">Clear single H1 (2/2)</div>
-      <div class="check-detail">Clear single H1 (2/2)</div>
-      <div class="check-detail flag">No H1 detected — image-based hero (0/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[H1 count, nesting note] ([0–2]/2)</div><div class="check-detail">[H1 count, nesting note] ([0–2]/2)</div><div class="check-detail">[H1 count, nesting note] ([0–2]/2)</div><div class="check-detail">[H1 count, nesting note] ([0–2]/2)</div><div class="check-detail">[H1 count, nesting note] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">AI Crawler Accessibility</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail flag client-col">Unable to verify this pass</div>
-      <div class="check-detail flag">Unable to verify this pass</div>
-      <div class="check-detail flag">Unable to verify this pass</div>
-      <div class="check-detail flag">Unable to verify this pass</div>
-      <div class="check-detail" style="color:#B5502E; font-weight:700;">Verified — Disallowed (0/2)</div>
+      <div class="check-detail client-col">[Allowed / Disallowed / Not mentioned per bot] ([0–2]/2)</div><div class="check-detail">[Allowed / Disallowed / Not mentioned per bot] ([0–2]/2)</div><div class="check-detail">[Allowed / Disallowed / Not mentioned per bot] ([0–2]/2)</div><div class="check-detail">[Allowed / Disallowed / Not mentioned per bot] ([0–2]/2)</div><div class="check-detail">[Allowed / Disallowed / Not mentioned per bot] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">llms.txt Presence</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail flag client-col">Not found — emerging standard, partial credit (1/2)</div>
-      <div class="check-detail">Present, well-formed (2/2)</div>
-      <div class="check-detail flag">Not found — emerging standard, partial credit (1/2)</div>
-      <div class="check-detail flag">Not found — emerging standard, partial credit (1/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[Well-formed / malformed / not found] ([0–2]/2)</div><div class="check-detail">[Well-formed / malformed / not found] ([0–2]/2)</div><div class="check-detail">[Well-formed / malformed / not found] ([0–2]/2)</div><div class="check-detail">[Well-formed / malformed / not found] ([0–2]/2)</div><div class="check-detail">[Well-formed / malformed / not found] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">AI-Access Legal Posture</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail client-col">ToS explicitly restricts scraping/crawling/bots (0/2)</div>
-      <div class="check-detail flag">Not checked this pass</div>
-      <div class="check-detail">ToS explicitly restricts AI agents (0/2)</div>
-      <div class="check-detail flag">Not checked this pass</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[ToS language found / none] ([0–2]/2)</div><div class="check-detail">[ToS language found / none] ([0–2]/2)</div><div class="check-detail">[ToS language found / none] ([0–2]/2)</div><div class="check-detail">[ToS language found / none] ([0–2]/2)</div><div class="check-detail">[ToS language found / none] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">Image Alt Text</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail flag client-col">JS-rendered gallery — not assessed</div>
-      <div class="check-detail">Populated on all key images (2/2)</div>
-      <div class="check-detail">Populated on most, missing on hero (1/2)</div>
-      <div class="check-detail flag">JS-rendered gallery — not assessed</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[Populated / missing / JS-rendered, not assessed] ([0–2]/2)</div><div class="check-detail">[Populated / missing / JS-rendered, not assessed] ([0–2]/2)</div><div class="check-detail">[Populated / missing / JS-rendered, not assessed] ([0–2]/2)</div><div class="check-detail">[Populated / missing / JS-rendered, not assessed] ([0–2]/2)</div><div class="check-detail">[Populated / missing / JS-rendered, not assessed] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">URL Structure</div>
       <div><span class="check-tag verified">🔒</span></div>
-      <div class="check-detail client-col">Clean, readable path (2/2)</div>
-      <div class="check-detail">Clean, readable path (2/2)</div>
-      <div class="check-detail">Clean, readable path (2/2)</div>
-      <div class="check-detail flag">Query-string IDs where a slug would do (1/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[Clean / cruft note] ([0–2]/2)</div><div class="check-detail">[Clean / cruft note] ([0–2]/2)</div><div class="check-detail">[Clean / cruft note] ([0–2]/2)</div><div class="check-detail">[Clean / cruft note] ([0–2]/2)</div><div class="check-detail">[Clean / cruft note] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">Structured Data</div>
       <div><span class="check-tag best-effort">🔍</span></div>
-      <div class="check-detail flag client-col">Not assessed — no rendering tool used</div>
-      <div class="check-detail flag">Not assessed — no rendering tool used</div>
-      <div class="check-detail flag">Not assessed — no rendering tool used</div>
-      <div class="check-detail flag">Not assessed — no rendering tool used</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[Types found / not assessed, no rendering tool] ([0–2]/2)</div><div class="check-detail">[Types found / not assessed, no rendering tool] ([0–2]/2)</div><div class="check-detail">[Types found / not assessed, no rendering tool] ([0–2]/2)</div><div class="check-detail">[Types found / not assessed, no rendering tool] ([0–2]/2)</div><div class="check-detail">[Types found / not assessed, no rendering tool] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">Content Extractability</div>
       <div><span class="check-tag best-effort">🔍</span></div>
-      <div class="check-detail flag client-col">Brand-poetry hero, no lead-first offer (0/2)</div>
-      <div class="check-detail">Leads with the value prop directly (2/2)</div>
-      <div class="check-detail">States the offer in sentence one (1/2)</div>
-      <div class="check-detail flag">Brand-voice hero buries the offer (0/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[Leads with the answer / buries it] ([0–2]/2)</div><div class="check-detail">[Leads with the answer / buries it] ([0–2]/2)</div><div class="check-detail">[Leads with the answer / buries it] ([0–2]/2)</div><div class="check-detail">[Leads with the answer / buries it] ([0–2]/2)</div><div class="check-detail">[Leads with the answer / buries it] ([0–2]/2)</div>
     </div>
     <div class="check-row">
       <div class="check-name">Internal Linking Structure</div>
       <div><span class="check-tag best-effort">🔍</span></div>
-      <div class="check-detail client-col">Links to related communities, sparse cross-links to guides (1/2)</div>
-      <div class="check-detail">Rich related-content linking throughout (2/2)</div>
-      <div class="check-detail">Some related-content links, mostly nav-driven (1/2)</div>
-      <div class="check-detail flag">Nav/footer only, no in-content links (0/2)</div>
-      <div class="check-detail blocked">Blocked — not assessed</div>
+      <div class="check-detail client-col">[Relevant in-content links / nav-only] ([0–2]/2)</div><div class="check-detail">[Relevant in-content links / nav-only] ([0–2]/2)</div><div class="check-detail">[Relevant in-content links / nav-only] ([0–2]/2)</div><div class="check-detail">[Relevant in-content links / nav-only] ([0–2]/2)</div><div class="check-detail">[Relevant in-content links / nav-only] ([0–2]/2)</div>
     </div>
   </div>
 
@@ -260,13 +215,13 @@
     <ul>
       <li><strong>Measures:</strong> technical readiness — whether AI and search engines can access, parse, and extract this site's content.</li>
       <li><strong>Does not measure:</strong> live AI-citation share — how often a brand is actually mentioned in ChatGPT/Perplexity/Gemini answers. That requires paid tools with API access at scale (Profound, Gumshoe, Semrush AI visibility).</li>
-      <li><strong>ToS restrictions vs. technical blocks are different levers.</strong> Both K. Hovnanian and Lennar restrict scraping in their Terms — a legal signal — but neither is technically blocked at the robots.txt level, and both got cited directly by live engines. D.R. Horton's block is technical, not just legal, and that's what actually stopped direct citation.</li>
+      <li><strong>ToS restrictions vs. technical blocks are different levers.</strong> [Which sites have which, and what the live engines actually did in each case.]</li>
       <li><strong>Known limitation:</strong> a compliant robots.txt is not proof of actual access — CDN/firewall-level blocking (e.g., Cloudflare's AI Bot Management) can override it entirely before a bot's request ever reaches the server.</li>
     </ul>
   </div>
 
   <div class="footer">
-    <strong>Sources:</strong> Direct fetch of khov.com, pulte.com, lennar.com, and kbhome.com homepages (title, meta, canonical, heading structure, alt text, URL structure). K. Hovnanian and Lennar Terms &amp; Conditions (khov.com/terms-and-conditions, lennar.com/termsandconditions). drhorton.com fetch attempt — robots.txt disallow confirmed by the fetch tool directly. llms.txt checked directly at each domain. Live engine citations checked directly in ChatGPT and Gemini, logged in. Character-length, schema-type, and named-AI-bot thresholds reconfirmed against 2026 guidance; nothing older than 3 years presented as current.
+    <strong>Sources:</strong> [Pages fetched per site; Terms URLs; robots.txt and llms.txt fetch results; engines used for live citations; date; which thresholds were reconfirmed against current guidance and the year of that guidance].
     Built with seo-geo-scorecard — every check traced to an actual fetch, an actual block, or explicitly marked unverified. Nothing simulated.
   </div>
 
