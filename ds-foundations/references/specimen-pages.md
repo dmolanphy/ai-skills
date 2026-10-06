@@ -4,6 +4,13 @@ After the variables, text styles, and grid styles exist, build three specimen pa
 
 Pages are named `→ Typography`, `→ Color`, `→ Grid`. Everything that can be bound is bound: page titles use a text style + the on-brand color token, type specimens use the local text styles, section labels use the Eyebrow style, color swatches bind their fill to the color variable, grid frames bind to the grid styles, and divider/border lines bind to border tokens.
 
+
+## Contents
+- Shared layout constants
+- Typography page (column / spec-table layout)
+- Color page
+- Grid page
+
 ## Shared layout constants
 - Spec frame width **2827**, white fill. Left/right margin **120** (content spans 120 → 2707).
 - **Header bar:** full-width rect `0,0,2827,181`, fill bound to `color/primary/brand-secondary`; page title at `x=120, y=70`, **bound to the `.Docs/Header` text style** (the private chrome style — see below), fill bound to **`text/on-brand`** (white on the brand bar).
@@ -36,7 +43,7 @@ Note: a line node carries the divider via **strokes** (not fills) — that's the
 
 ## Typography page
 
-**Column / spec-table layout** (modeled on the Penske design-system spec page). One **column per text-style group** (`Headline`, `Body`, `Utility`), laid side by side in a horizontal auto-layout. Each column has a top-rule header with the group name, then one **entry per style**. Each entry is a horizontal auto-layout row with a **top-border divider** (`border/strong`), containing:
+**Column / spec-table layout** (modeled on the user's design-system spec pages). One **column per text-style group** (`Headline`, `Body`, `Utility`), laid side by side in a horizontal auto-layout. Each column has a top-rule header with the group name, then one **entry per style**. Each entry is a horizontal auto-layout row with a **top-border divider** (`border/strong`), containing:
 - a fixed **325px spec block**: the style's leaf **name** on top, then a two-column attribute table (labels `text/secondary` + values `text/primary`) reading **font-family, font-weight, font-size, line-height, letter-spacing, paragraph-spacing, text-transform** straight off the live text style;
 - a flexible **specimen** ("Lorem ipsum…") set in the actual text style (`layoutGrow=1`).
 

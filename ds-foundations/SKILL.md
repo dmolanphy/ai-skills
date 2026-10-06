@@ -1,7 +1,7 @@
 ---
 name: ds-foundations
 description: >
-  Stand up a foundational design-system Figma file at the start of a new design project —
+  Stands up a foundational design-system Figma file at the start of a new design project —
   tokens/variables (typography, color, spacing, radius), semantic tokens, layout grids, and text
   styles, built directly into a Figma file. Supports two foundation types: the user's own custom
   system, or a shadcn/ui-aligned token structure (CSS-variable-style semantic tokens, Tailwind-aligned
@@ -15,141 +15,83 @@ description: >
 
 # Design System Foundations
 
-You are helping the user stand up the **foundational design-system Figma file** that gets created at the start of nearly every new design project. This is a highly repeatable setup with project-specific values. Your job is to (1) confirm what this run is building — the source of truth, the foundation type, and the scope, (2) get the right Figma file to work in, (3) make sure it has a cover, (4) fill in whatever's left from intake, and (5) build the foundations directly into that file: variables, grids, and text styles, using the right conventions for the path chosen.
+Stand up the **foundational design-system Figma file** at the start of a new design project: cover, primitive tokens, semantic tokens, layout grids, text styles, and three specimen pages (Typography, Color, Grid). **Baselines only** — not components, full UI, or finished documentation. On the shadcn path this is a token-and-variable baseline, not the shadcn component library; if the user wants components, point them to an existing free Figma kit (e.g. Obra's shadcn/ui community edition, RAVN's shadcn/ui Ultimate Kit).
 
-This skill is for **baselines only.** It gets the cover, primitive tokens, semantic tokens, grids, and text styles in place so design work can start. It is not for building components, full UI, or finished documentation pages. On the shadcn path specifically, this is a **token-and-variable baseline, not a shadcn component library** — it does not build the ~50 shadcn components. If the user wants those, point them at an existing free Figma kit (e.g. the Obra shadcn/ui community edition, or the RAVN shadcn/ui Ultimate Kit) rather than building components here.
+This skill is self-contained: take conventions, fonts, colors, and layout specs only from this file and its references, never from another skill. Read only the reference set for the chosen foundation type:
 
-This skill is self-contained. Everything you need is in this file and the references below — do not pull conventions, fonts, colors, or layout specs from any other skill. There are **two parallel sets of references** depending on the foundation type chosen in Step 0 — read only the set for the path you're on:
-- **Custom foundation:** `references/token-architecture.md` (token structure, naming, defaults, distilled from the user's existing foundations files) and `references/figma-build.md` (plugin-API recipes for variables, styles, grids).
-- **Shadcn/ui foundation:** `references/shadcn-token-architecture.md` and `references/shadcn-figma-build.md` — same shape, adapted to shadcn's real CSS-variable conventions where shadcn defines something, and layered with the user's own conventions where it doesn't (typography, dual-mode spacing).
+| Foundation type | Token structure | Figma build recipes |
+|---|---|---|
+| Custom (the user's own system) | `references/token-architecture.md` | `references/figma-build.md` |
+| shadcn/ui | `references/shadcn-token-architecture.md` | `references/shadcn-figma-build.md` |
 
-Both paths share `references/specimen-pages.md` (the Typography/Color/Grid documentation-page builders) unchanged — it's data-driven off live variable/style names, not hardcoded to either path.
-
----
+Both paths share `references/specimen-pages.md`.
 
 ## Golden rules
 
-- **Never guess values silently.** Confirm or ask. The whole point of the intake is that each project is specific.
-- **Wait for the file.** Always ask which Figma file to work in and wait for the URL before doing anything. Never create a new file unless the user explicitly says it's okay.
-- **Match the user's conventions** (slash-grouped variable names, semantic text-style names). They're in `references/token-architecture.md` (custom path) or `references/shadcn-token-architecture.md` (shadcn path). Don't invent a new naming scheme.
-- **Cover logic:** If the file already has a Cover page, leave it exactly as-is and move on. If it has none, create one using the house cover style — but ask the user for the title, and whether they want a logo on it, first.
-- **Build the real Figma assets** (variables, text styles, grid styles in their panels) **and** the three specimen pages that document them (Typography, Color, Grid), modeled on the user's established specimen-page conventions. The pages are standard output now, not optional — the tokens are the source of truth, the pages visualize them and stay bound to them.
-- **On the shadcn path, never default to "import everything."** shadcn is large and comprehensive; ask what's actually needed (Step 0's scoped intake) rather than building chart tokens, sidebar tokens, or anything beyond the core baseline unless the user opts in.
-
----
+- **Never guess values silently.** Confirm or ask; each project is specific.
+- **Wait for the file.** Ask which Figma file to work in and wait for the URL. Create a new file only if the user explicitly okays it.
+- **Match existing conventions** (slash-grouped variable names, semantic text-style names) from the path's token-architecture reference. Do not invent a naming scheme. When a file the user points to differs from a default here, mirror the file.
+- **Build real assets** (variables, text styles, grid styles in their panels) **and** the three specimen pages. Pages are standard output; tokens are the source of truth and the pages stay bound to them.
+- **shadcn: never "import everything."** Build only the core baseline unless the user opts into more.
 
 ## Workflow
 
-### Step 0: Intake — confirm what this run is building
+### 1. Intake (one round)
 
-Runs first, before Step 1 — establishes the source of truth, the foundation type, and the scope, so nothing downstream has to guess. Use the AskUserQuestion tool where a structured choice helps.
+Ask everything below in a single turn, using AskUserQuestion for the structured choices, and request the Figma file URL in the same turn. Nothing is built until answers arrive.
 
-1. **Source of truth.** Ask which applies, checking in this order of preference:
-   - **An existing DESIGN.md file** — if the project already has one (from `design-spec`, hand-authored, or supplied by the user), it's a better starting point than re-deriving values from scratch: its YAML front matter already has structured colors, typography, spacing, radius, and grid values. If one exists, get it and use its tokens directly at Step 4 — no need to re-extract from a PDF or collect interactively for anything it already covers.
-   - **Brand guidelines (PDF or images only)** — if no DESIGN.md, ask: *"Do you have existing brand guidelines I should pull from? If so, share them as a PDF or image files."* Accept **PDF or images only** — do not offer or accept Figma links, websites, or other formats.
-   - **Neither** — collect values interactively during Step 3.
-2. **Foundation type.** Ask which this project needs — the answer determines which reference files and which remaining questions apply:
-   - **Your own system** — the existing custom foundation (`token-architecture.md` / `figma-build.md`).
-   - **shadcn/ui** — adapted token structure that mirrors shadcn's real CSS-variable conventions (`shadcn-token-architecture.md` / `shadcn-figma-build.md`).
+1. **Source of truth**, in order of preference: an existing **DESIGN.md** (from `design-spec` or hand-authored; its YAML already holds colors, typography, spacing, radius, grid, so use it directly in step 4); else **brand guidelines as PDF or images only** (no Figma links, websites, or other formats); else collect values interactively.
+2. **Foundation type:** custom system or shadcn/ui. Ask directly; never infer from mentions of React or Tailwind.
+3. **Scope** (multiSelect, default all): typography tokens, color tokens, spacing + radius primitives, semantic tokens, layout grids, text styles. Specimen pages are always built; ask only if the user wants to skip one.
+4. **If shadcn/ui:** **dark mode** (Light-only or Light + Dark; asked fresh every project, never assumed) and **chart and sidebar tokens** (off by default; build only on explicit opt-in).
 
-   Don't guess this from context (e.g. don't assume shadcn just because the user mentioned React or Tailwind) — ask directly and wait for the answer.
-3. **Scope.** Which to build this run (default: all): typography tokens, color tokens, spacing + radius primitives, semantic tokens, layout grids, text styles. Use the AskUserQuestion tool with multiSelect. Let them drop any.
-4. **If shadcn/ui was chosen above, also ask:**
-   - **Dark mode.** Build Light-only, or Light + Dark? Asked fresh every project — never assumed from a previous run or from context. Determines whether the Semantic collection gets one mode or two (see `shadcn-token-architecture.md`).
-   - **Chart & sidebar tokens.** Off by default. Ask explicitly whether the project needs either — don't build them unasked. This is the main lever for not importing "everything shadcn has."
+If the user already supplied values (hex colors, fonts), acknowledge and confirm them instead of re-asking, and never present invented brand colors or fonts as real. Label anything beyond what they gave as a default.
 
-Everything downstream — the file (Step 1), the cover (Step 2), the remaining intake (Step 3), extraction (Step 4), and the build (Step 5) — operates only within what's established here.
+### 2. File and cover
 
-### Step 1 — Get the Figma file (ask, then wait)
+If the user has no file, offer to create one, and only on their explicit okay: call `Figma:whoami`, ask which team/org (prefer an enterprise seat; personal/starter plans hit rate limits), and create it there. Never hard-code an org key.
 
-Ask the user which Figma file to work in and **wait for them to give you the URL.** Do not proceed without it.
+Tell the user to **open the file in the Figma desktop app** (`use_figma` runs against the open file). List its pages and check for a Cover (detection recipe in `references/figma-build.md`).
 
-If the user doesn't have a file yet, offer to create one — but **only create a new file if they explicitly say it's okay.** When they okay it, call `whoami` to list their teams/orgs and ask which one to use (prefer an enterprise seat — personal/starter plans hit Figma rate limits quickly), then create the file there. Never silently spin up a file, and never hard-code an org key.
+- **Cover exists:** leave it untouched; do not ask about it.
+- **No cover:** ask for the **title** and whether to place a **logo**, then build it per `references/figma-build.md`: 1920×1080 black frame on a `📕 Cover` page, optional logo top-left (only if supplied), title large in the primary font, light weight, white, lower-left.
 
-Once you have the file, tell the user to **open it in the Figma desktop app** — the `use_figma` plugin runs against the open file. Then inspect it: list its pages and check for an existing Cover (cover-detection recipe in `references/figma-build.md`). Report what's there.
+### 3. Remaining intake
 
-### Step 2 — Cover page
+Ask only what step 1 and the source of truth left open; confirm rather than re-ask.
 
-- **If a Cover already exists:** leave it completely untouched and move on to Step 3.
-- **If there is no Cover:** ask the user what **title** the cover should use (e.g. "Design System: Foundations," or a project/brand name), and whether they want a logo or mark placed on it. Wait for their answers, then build a cover using the recipe in `references/figma-build.md` — a 1920×1080 black frame on a `📕 Cover` page, an optional logo top-left (only if the user supplied one), and the title set large in the primary font, light weight, white, lower-left.
+- **Typography:** headline family, body family, mono (only if needed), weights, base body size, scale ratio.
+- **Color:** two brand colors + accent (`color/primary/*`), up to 5 supporting colors (`color/secondary/*`), brand-specific neutrals. Utility colors default to success/warning/error.
+- Custom path is **single color mode**; mention modes can be added later. (shadcn dark mode is decided in step 1.)
 
-Only ask about the title and logo when you're actually going to create the cover. If one exists, don't ask.
+### 4. Extract and confirm
 
-### Step 3 — Remaining intake
+- **DESIGN.md:** read the YAML and map its keys onto the primitive structure (same shape on both paths; see the Color-primitives section of the path's token-architecture reference). Confirm the mapping with the user.
+- **Guidelines (PDF/images):** read them, pull every concrete value (color hex + role; font families, weights, size scale or named styles; spacing/radius/grids only if specified), and show the user what you found. Ask: "Want me to create color tokens from these values?" and the same for type. Fill gaps from the path's defaults, **labeled as defaults**.
 
-Fill in whatever Step 0 didn't already resolve. Use the AskUserQuestion tool where it helps.
+Then present the proposed token set (names, values, modes) as a compact plan and get a thumbs-up before writing to Figma.
 
-1. **Typography specifics** (if not coming cleanly from a DESIGN.md or guidelines): headline font family, body font family, mono (only if needed), the weights in use, base body size, and scale ratio.
-2. **Color specifics** (if not from a DESIGN.md or guidelines): the two brand colors + accent (`color/primary/*`), up to 5 supporting base colors (`color/secondary/*`), and any brand-specific neutrals. Utility colors default to success/warning/error.
-3. **Specimen pages** are built by default (Typography, Color, Grid) — you don't need to ask. Only ask if the user wants to *skip* any of them.
+### 5. Build in Figma
 
-This baseline is **single color mode on the custom path** — don't build Light/Dark there. Mention that modes can be added later once the system matures. (The shadcn path's dark-mode question, asked in Step 0, is the one exception — it's asked, not defaulted either way.)
+Load `figma:figma-use` (mandatory before `Figma:use_figma`) and skim `figma:figma-generate-library`. Follow the path's build reference. Create collections in this order (panel order follows creation order), setting each variable's `scopes` as you create it (scoping table in the token-architecture reference; not optional):
 
-Don't over-interview. If a DESIGN.md or guidelines answer a question, confirm rather than ask from scratch.
+1. **Typography** — Desktop/Mobile modes. Custom: t-shirt names (`font-size/large`). shadcn: Tailwind-aligned names (`font-size/text-lg`).
+2. **Color** — single mode, identical structure on both paths (`color/primary|secondary|neutral|utility/*`; neutral has 7 steps). Scopes left at all properties.
+3. **Spacing** — Desktop/Mobile modes (`spacing/*`; Mobile = next step down). Radius: custom uses `radius/*` from `token-architecture.md`; shadcn uses direct-value `radius/sm|md|lg|full`.
+4. **Semantic** — aliases to Color. Custom: single mode, `text/*`, `surface/*`, `border/*`. shadcn: `base/*`, `surface/*`, `brand/*`, `utility/*`, `border/*` with `-foreground` pairs; one mode unless dark mode was chosen, then Light/Dark. Chart/sidebar tokens only if opted in.
+5. **Grid styles** — Desktop, Tablet, Mobile, values from the token-architecture reference or the guidelines.
+6. **Text styles** — `Headline/*` (Jumbo, XL, LG, MD, SM), `Body/*` (LG, Base, MD, SM), `Utility/*` (Eyebrow, Caption), optional `Mono`; same names on both paths. Hanging punctuation ON; line-heights only 100/110/120/130; Eyebrow uppercase + 6% tracking. Bind family/size/weight to variables (fall back to literals with a note). Also create the private `.Docs/*` styles (Header, Spec Name, Spec Detail; recipe in `figma-build.md`).
+7. **Specimen pages** — `→ Typography`, `→ Color`, `→ Grid` per `references/specimen-pages.md`. Run after tokens, styles, and grids exist. Screenshot each to verify.
 
-### Step 4 — Extract from the source of truth
+Build incrementally and verify as you go. If a required font is not installed, build with the closest stand-in and leave an off-canvas note frame listing the intended font (recipe in `figma-build.md`).
 
-Depending on Step 0's answer:
+### 6. Hand off
 
-**If a DESIGN.md was supplied:** read its YAML front matter directly — colors, typography, spacing, radius, grid are already structured and named. Map its keys onto the primitive structure (same shape on both paths; see `references/token-architecture.md` or `references/shadcn-token-architecture.md`'s Color-primitives section). This is the fastest path — there's no OCR or visual inference involved, just confirming the mapping with the user before building.
+Brief, conversational summary: cover created (title, logo) or left alone; foundation type; collections with approximate variable counts; modes (including whether dark mode was built); grids; text styles; and anything defaulted or substituted for review (fonts, guessed neutrals).
 
-**If brand guidelines (PDF/images) were supplied:** read the files and pull every concrete value you can, then **show the user what you found before building** so they can correct it:
+## Conventions in one place
 
-- **Color:** hex values with their intended roles (primary, secondary, accent, neutrals, utility).
-- **Typography:** font families (headline / body / mono), the weights, and any documented size scale or named styles.
-- **Spacing / radius / grids:** only if the guidelines specify them; otherwise use the defaults from the appropriate token-architecture reference for the chosen path, and tell the user they're defaults they can tune.
-
-Ask explicitly: *"Want me to create color tokens from these guideline values?"* and the same for type. Anything the guidelines don't cover, fill from defaults and **label it as a default**, or collect interactively — the user prefers to be asked when there's nothing to extract from.
-
-**Either way:** present the proposed token set (names + values + modes) as a compact plan and get a thumbs-up before writing to Figma. This is the last cheap moment to fix naming or values.
-
-### Step 5 — Build in Figma
-
-Before calling `use_figma`, read the Figma plugin's `/figma-use` skill (mandatory per the Figma MCP server) and skim `/figma-generate-library` for design-system patterns. Then build, following `references/figma-build.md` (custom path) **or** `references/shadcn-figma-build.md` (shadcn path — chosen in Step 0):
-
-Create the collections in this exact order on both paths (panel order follows creation order): **Typography → Color → Spacing → Semantic.** Set each variable's `scopes` as you create it (full scoping table in `references/token-architecture.md` or `references/shadcn-token-architecture.md`) — this is a key step, not optional. On the shadcn path, Semantic's mode count (one vs. Light/Dark) depends on the Step 0 dark-mode answer — never build both modes without having asked.
-
-1. **Typography collection** — two modes (**Desktop**/**Mobile**) on both paths. Custom path: t-shirt names (`font-size/large`, etc.), full table in `references/token-architecture.md`. Shadcn path: Tailwind-aligned names (`font-size/text-lg`, etc.), full table in `references/shadcn-token-architecture.md`. Scopes are the same on both: Font family / Font style / Font size + Line height + Paragraph spacing.
-2. **Color collection** — single mode, **structurally identical on both paths**: `color/primary/*`, `color/secondary/*`, `color/neutral/*` (7 steps), `color/utility/*`. Scopes left as all properties. This is deliberate — it lets brand-guideline extraction (Step 4) work the same regardless of foundation type.
-3. **Spacing collection** — two modes (**Desktop**/**Mobile**) on both paths: `spacing/*` (scope Width/height + Gap; per-mode, Mobile = next step down). **Radius differs by path:** custom path uses `references/token-architecture.md`'s `radius/*`; shadcn path uses the trimmed, direct-value `radius/sm`/`/md`/`/lg`/`/full` in `references/shadcn-token-architecture.md` (no derived multiplier math — flagged there as a deliberate simplification, not shadcn's literal formula).
-4. **Semantic collection** — aliases pointing at Color. Custom path: single-mode, `text/*`/`surface/*`/`border/*`, alias map in `references/token-architecture.md`. Shadcn path: single mode **unless** the Step 0 dark-mode question was answered yes, in which case Light/Dark modes; groups are `base/*`, `surface/*`, `brand/*`, `utility/*`, `border/*` with `-foreground` pairs, alias map and conditional-mode build logic in `references/shadcn-token-architecture.md` / `references/shadcn-figma-build.md`. If chart/sidebar tokens were opted into during Step 0, build those here too (recipe in `references/shadcn-figma-build.md`) — otherwise skip them entirely.
-5. **Grid styles** — Desktop, Tablet, Mobile, with the column counts / margins / gutters from the appropriate token-architecture reference (or guideline-specified). Same on both paths.
-6. **Text styles** — three groups on both paths: `Headline/*` (Jumbo, XL, LG, MD, SM), `Body/*` (LG, Base, MD, SM), `Utility/*` (Eyebrow, Caption), plus optional `Mono`. Style *names* are identical on both paths — only the underlying size-token references differ (t-shirt vs. Tailwind-aligned). Every style has hanging punctuation ON; line-heights are limited to 100/110/120/130; Eyebrow is uppercase + 6% tracking. Bind family/size/weight to variables; fall back to literal values with a note if binding fails. Also create the private **`.Docs/*` chrome styles** (period-prefixed so they don't publish: Header, Spec Name, Spec Detail) the spec pages use — recipe in `references/figma-build.md` (shared, unchanged on both paths).
-7. **Specimen pages** — after the tokens/styles/grids exist, build the `→ Typography`, `→ Color`, and `→ Grid` documentation pages following `references/specimen-pages.md`, **unchanged on both paths** — it reads live variable/style names and groupings rather than hardcoding either path's conventions. The Typography page is a column/spec-table layout (one column per group; each style shows its live spec values beside a specimen; 4px rule above each column header, 1px between entries). Color swatches bind fills to color variables (name + hex labels); grid frames bind to grid styles. All page chrome (titles, headers, spec text, labels) binds to the `.Docs/*` styles. Screenshot each to verify before finishing.
-
-Build incrementally and verify as you go (the recipes file explains how to re-read what you created). If a required font isn't installed locally, substitute the closest available font, build with the stand-in, and leave an off-canvas note frame listing the intended font and the swap so the user can fix it later (recipe in `references/figma-build.md`).
-
-### Step 6 — Hand off
-
-Give the user a brief, conversational summary: whether you created a cover (and its title, and whether a logo was placed) or left an existing one alone, which foundation type was built, which collections and roughly how many variables per group, the modes (including whether dark mode was built, on the shadcn path), the grids, and the text styles you created — plus anything you defaulted or substituted that they should review (fonts, guessed neutrals, etc.). Keep it short; they can open the panels for detail.
-
----
-
-## What "match my system" means
-
-the user's conventions, confirmed from the user's existing foundations files and detailed in `references/token-architecture.md`:
-
-- Variable names are **lowercase, slash-grouped** so Figma nests them: `font-family/primary`, `font-weight/light`, `color/primary/brand-primary`, `spacing/space-16`, `radius/base`.
-- Four collections, created in order: **Typography** (Desktop/Mobile modes), **Color** (single mode), **Spacing** (Desktop/Mobile modes), **Semantic** (single-mode aliases → Color). No Light/Dark color modes in the baseline.
-- Variables are **scoped** so each only appears where it belongs (full table in `references/token-architecture.md`).
-- Text styles are **semantically named** under `Headline/*`, `Body/*`, `Utility/*` — not sized names.
-- Tokens live in the **Variables/Styles panels**; the canvas documents them on dedicated pages — a `📕 Cover` page (black, large light-weight title, optional logo top-left) plus `→ Typography`, `→ Color`, and `→ Grid` specimen pages.
-
-When in doubt, mirror what's already in the file the user points you to over any default here.
-
----
-
-## What "shadcn/ui foundation" means
-
-The alternate path, used when Step 0's answer is shadcn/ui. Detailed in `references/shadcn-token-architecture.md` and `references/shadcn-figma-build.md`:
-
-- Same **lowercase, slash-grouped** naming rule, same **four collections in the same order** (Typography → Color → Spacing → Semantic).
-- **Color (primitives) is intentionally identical to the custom path** — same `color/primary/*`, `/secondary/*`, `/neutral/*`, `/utility/*` shape — so a brand's palette can be imported once, then referenced by shadcn's semantic pairs.
-- **Semantic is shaped after shadcn's real CSS-variable pairs** (`primary`/`primary-foreground`, `muted`/`muted-foreground`, etc.), adapted into slash-grouped names (`brand/primary`, `brand/primary-foreground`, `utility/muted`, `utility/muted-foreground`...). It's **single-mode unless dark mode is opted into that project** — never built with two modes by default.
-- **Typography and Spacing keep the Desktop/Mobile mode convenience** even though shadcn/Tailwind itself doesn't work that way (it swaps utility classes per breakpoint, not token values) — this was a deliberate choice to keep, not a shadcn convention.
-- **Typography naming and default values are Tailwind-aligned** (`text-sm`, `text-base`, `text-lg`...) rather than the custom path's t-shirt names, since shadcn ships no typography tokens of its own — matching Tailwind's real scale lets a developer read a Figma spec straight into a class name.
-- **Radius is a trimmed 4-value set with direct values** (`sm`/`md`/`lg`/`full`), not shadcn's literal derived-multiplier math — chosen deliberately to avoid decimal pixel values in Figma's corner-radius field.
-- **Chart and sidebar tokens are opt-in only** — never built unless explicitly requested in the Step 0 intake. This is the main guardrail against importing more of shadcn than the project needs.
-- This path is **tokens and variables only** — it does not build shadcn's component library. Point users at an existing free Figma kit for components (see the note at the top of this file).
-
-When in doubt on this path, prefer shadcn's real documented conventions (ui.shadcn.com/docs/theming) over an invented default — the custom path's conventions only apply where noted above.
+- Names are **lowercase and slash-grouped** so Figma nests them (`font-family/primary`, `color/primary/brand-primary`, `spacing/space-16`).
+- Four collections, same order on both paths. Text styles are semantically named, not sized.
+- shadcn semantic tokens follow shadcn's real CSS-variable pairs (`brand/primary`, `brand/primary-foreground`, `utility/muted`...); where shadcn defines nothing (typography, dual-mode spacing), the user's conventions apply. Prefer documented shadcn conventions (ui.shadcn.com/docs/theming) over invented defaults.
+- Typography/Spacing keep Desktop/Mobile modes on both paths, a deliberate choice rather than a shadcn convention. Radius is a trimmed direct-value set, not shadcn's derived-multiplier math.
