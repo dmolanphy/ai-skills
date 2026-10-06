@@ -1,121 +1,103 @@
 ---
 name: product-owner
 description: >
-  Literal dispatcher for design/dev projects — takes a brief, checks it's clear enough
-  to act on, decomposes it into discrete tasks, matches each task to a specialist
-  skill from skills-registry.md, assigns a model per task based on complexity,
-  dispatches real subagents to do the work (parallel where tasks are independent,
-  sequential where they depend on each other), and synthesizes the results into a
-  deliverable. Requires the Agent/Task tool for real subagent dispatch — built for
-  Cowork/Agent-SDK environments, not a narrate-through-the-steps skill. Use when the
-  user says "deploy product-owner," "kick this project off," "orchestrate this,"
-  "dispatch this brief," "run the team on this," or hands over a project brief and
-  wants it broken down and executed rather than just planned.
+  Literal dispatcher for design/dev projects: takes a brief, checks it's clear enough to act
+  on, decomposes it into tasks, matches each task to a specialist skill from
+  references/skills-registry.md, assigns a model per task by complexity, dispatches real
+  subagents (parallel where independent, sequential where dependent), and synthesizes the
+  results. Requires the Agent tool for subagent dispatch (Cowork/Agent-SDK environments). Use
+  when the user says "deploy product-owner," "kick this project off," "orchestrate this,"
+  "dispatch this brief," "run the team on this," or hands over a brief and wants it broken
+  down and executed, not just planned.
 ---
 
 # Product Owner
 
-Runs a design/dev project the way a product owner would: confirm the brief is workable, break it into tasks, staff each task with the right specialist and the right amount of model, dispatch the work, and bring it back together into something reviewable. Never fully autonomous — decomposition and dispatch both pause for explicit go-ahead before anything actually runs.
+Runs a design/dev project the way a product owner would: confirm the brief is workable, break it into tasks, staff each with the right specialist and model, dispatch, and bring it back together. Never fully autonomous: nothing is dispatched without explicit per-task approval.
 
 ## Requirements
 
-Two things have to be true before any step below runs, Step 0 included:
+Both must hold before any step runs:
 
-1. **The Agent/Task tool must be available.** This skill dispatches real subagents with per-task model selection. If that tool isn't available in the current environment, say so directly rather than quietly falling back to doing the work yourself in one thread — this skill's entire value is the dispatch mechanic, not the checklist.
-2. **A project brief must exist.** A description of the work, an attached document, a pasted spec — something to actually scope and decompose. If product-owner is invoked with nothing to work from, ask for a brief directly and stop there. Don't run the onboarding wizard against nothing — phase-scoping only means something once there's an actual brief to scope it against.
+1. **The Agent tool is available.** This skill's value is real subagent dispatch with per-task model selection. If it's unavailable, say so directly rather than quietly doing the work in one thread.
+2. **A project brief exists** (description, attached document, pasted spec). If invoked with nothing to work from, ask for a brief and stop.
 
-## Step 0: Onboarding wizard — scope the project
+## Workflow
 
-Runs first, every time product-owner is invoked — including a repeat dispatch on a brief you've already run this through, since what's in scope can change between rounds.
+Copy this checklist and tick it off:
 
-Before anything else, show the user a checkbox list of the project phases this dispatch might touch, and ask which ones to work on right now. Use the AskUserQuestion tool with multiSelect — this is a checkbox choice, not a single pick:
+```
+- [ ] 1. Scoping round (phases + clarity gaps)
+- [ ] 2. Decompose into tasks
+- [ ] 3. Grill-me, brief mode
+- [ ] 4. Approval gate: findings + dispatch plan + per-task decisions
+- [ ] 5. Dispatch subagents
+- [ ] 6. Synthesize directly
+- [ ] 7. Grill-me, solution mode
+- [ ] 8. Present deliverable, resurface deferred work
+```
 
-- **Strategy & Research** — market/competitive landscape, buyer journey, brand positioning, user research (discipline: Strategy)
-- **Design** — design system, UI/UX, Figma work, accessibility, dev handoff specs (discipline: Design)
-- **Content** — copywriting, messaging, voice and tone (discipline: Content)
-- **Development** — code implementation, technical SEO/GEO, motion, code review (discipline: Develop)
+### 1. Scoping round
 
-Product Management isn't a selectable phase — grill-me and this skill's own orchestration steps are always running in the background; they're how product-owner works, not a phase of the client's project.
+Runs every invocation, including a repeat dispatch on a brief already run, because scope can change between rounds. Read the brief, then ask in **one AskUserQuestion round**:
 
-**This is a coarse filter, not the per-task approval.** Selecting phases here narrows what Step 2 even considers decomposing. Step 4's per-task Deploy now / Defer / Skip still runs afterward, on whatever tasks actually got decomposed within the selected phases. Two layers of control: this step decides what's on the table at all; Step 4 decides what actually gets dispatched right now.
+- **Phases to work on now** (multiSelect checkboxes):
+  **Strategy & Research** (market/competitive landscape, buyer journey, brand positioning, user research) · **Design** (design system, UI/UX, Figma, accessibility, dev handoff) · **Content** (copy, messaging, voice) · **Development** (code, technical SEO/GEO, motion, code review).
+  Product Management isn't selectable: `grill-me` and this skill's own steps always run.
+- **Clarity gaps**, only for what the brief doesn't settle: audience (named or generic?), success criteria (concrete or vibes?), constraints (budget, timeline, technical, approval chain, existing systems), scope boundary (in vs. out). Ask directly; never decompose around a gap. This is a lighter, faster check than `grill-me`, which runs later against the task list.
 
-**If decomposition surfaces a task in a phase that wasn't selected, don't silently drop it or silently include it.** Flag it explicitly when presenting the dispatch plan in Step 4 — say what it is, which phase it falls under, and ask whether to add that phase to scope for this round or leave it out. Same discipline this library uses everywhere else: nothing falls out of scope quietly.
+### 2. Decompose
 
-## Step 1: Clarity check (before decomposition)
+Break the brief into discrete tasks, only within selected phases. Per task:
 
-Distinct from `grill-me`. Runs immediately after Step 0's scoping — read the brief and check whether there's enough to actually decompose into tasks:
+1. **Discipline** — Product Management / Strategy / Content / Design / Develop.
+2. **Matched skill** — match against `references/skills-registry.md` by discipline, subcategory, and trigger summary (the registry is the source of truth, not live skill descriptions). If no active row matches closely, **say so as a gap**: don't invent a skill call or silently do the work yourself. Offer to add it to the backlog in `skills-roadmap.md` if it's missing there.
+3. **Model** — by task nature: **Haiku** for simple mechanical single-skill tasks; **Sonnet** (default) for standard specialist work; **Opus** for high-stakes strategic/creative calls or deep multi-step reasoning.
+4. **Dependencies** — note any task needing another's output first; this drives step 5.
 
-- **Audience** — is there a real, named audience, or is it implicit/generic?
-- **Success criteria** — is "done" defined concretely, or is it vibes?
-- **Constraints** — budget, timeline, technical constraints, approval chain, existing systems to integrate with?
-- **Scope boundary** — is it clear what's in vs. out?
+A task that surfaces in an unselected phase is **flagged in step 4**, never silently included or dropped.
 
-If something critical is missing, ask directly — don't guess and don't decompose around a gap. This is a lighter, faster check than `grill-me` brief-mode (which runs later, against the actual task list); its only job is "can I responsibly start decomposing this."
+### 3. Grill-me, brief mode
 
-## Step 2: Decompose into tasks
+Run `grill-me` in brief mode against the decomposed task list (not the original brief).
 
-Break the brief into discrete tasks. For each task, determine:
+### 4. Approval gate
 
-1. **Discipline** — Product Management / Strategy / Content / Design / Develop. Only decompose tasks whose discipline falls within the phases selected in Step 0 — if a task in an unselected phase surfaces during decomposition, flag it per Step 0's rule rather than quietly including or dropping it.
-2. **Matched skill** — check `skills-registry.md` (the single source of truth) by discipline/subcategory/trigger_summary. Match against the registry, not against live skill descriptions — a miscategorization gets fixed once in the registry, not re-guessed every run.
-   - **If no active row matches closely, say so explicitly.** Don't invent a skill call or silently do the work yourself instead. Flag it as a gap — and if it's not already in the backlog section of `skills-roadmap.md`, offer to add it there before proceeding, so gaps surfaced mid-project don't get lost the way the original backlog almost did.
-3. **Model assignment** — by task nature, not a fixed rule per discipline:
-   - **Haiku** — simple, mechanical, single-skill tasks (formatting, a quick lookup, a small file edit with clear instructions)
-   - **Sonnet** — the default for standard specialist work; most dispatched tasks land here
-   - **Opus** — high-stakes strategic or creative calls, or tasks requiring deep multi-step reasoning (e.g. a competitive-audit carrying real strategic weight, a brand positioning call)
-4. **Dependencies** — does this task need output from another task before it can start? Note it explicitly; this drives Step 5's execution order.
+Present in one place: the `grill-me` findings; the task list with discipline, skill, and model per task; skill-less tasks flagged as gaps; out-of-phase tasks flagged with a question about adding that phase; and the execution plan (parallel vs. sequential, with the dependency chain).
 
-## Step 3: Grill-me — brief mode
+If `grill-me` raised **blocking issues**, resolve them with the user first (revising the task list if needed); never auto-resolve by guessing intent.
 
-Run `grill-me` in brief-mode against the decomposed task list itself (not the original brief — that's what Step 1 already lightly checked). Surface the output to the user as-is. Blocking issues pause the flow for a decision — do not auto-resolve them by guessing at intent.
+Then get a **per-task decision** with AskUserQuestion (multiSelect for the "deploy now" pass), not one blanket yes:
 
-## Step 4: Present the dispatch plan — approve, defer, or skip each task
+- **Deploy now** — in this round.
+- **Defer** — approved in principle, carried forward and resurfaced in step 8.
+- **Skip** — not doing it this round.
 
-Show the user, in one place:
+State explicitly when a task depends on one that is deferred or skipped. Dispatch nothing until decisions are in.
 
-- The task list, with discipline, matched skill, and assigned model per task
-- Any tasks with no matched skill, flagged as gaps
-- Any tasks that fell outside the phases selected in Step 0, flagged as out-of-scope-for-now rather than silently included or dropped
-- The execution plan — which tasks run in parallel, which run sequentially and why (dependency chain)
+### 5. Dispatch
 
-**Get a per-task decision, not one blanket approval.** For each task, the user picks one of three states — use the AskUserQuestion tool (multiSelect for the "deploy now" pass) rather than assuming a single yes/no covers the whole batch:
+For **Deploy now** tasks only:
 
-- **Deploy now** — included in this dispatch round
-- **Defer** — approved in principle, but not run yet; carried forward and resurfaced before Step 8 rather than silently dropped
-- **Skip** — not doing this task at all this round
+- **Independent tasks go together**: multiple Agent calls in a single message.
+- **Dependent tasks wait** for their dependencies to return. If a dependency was deferred or skipped, hold the task and carry it forward like a deferred one.
+- **Make each subagent prompt self-contained** (it has no memory of this conversation): which skill to invoke and why, the relevant slice of the brief, needed file paths or prior task outputs, and the expected response shape.
+- Use `subagent_type: general-purpose` unless a task clearly matches a more specific type, and pass the step 2 model via the `model` parameter.
 
-If a task depends on one that gets deferred or skipped, say so explicitly when presenting the plan — the user needs that tradeoff visible before deciding, not discovered later when the downstream task can't run.
+Keep a running list of deferred tasks and why.
 
-**Wait for explicit per-task decisions before dispatching anything.** This is a separate gate from Step 3 — grill-me stress-tests whether the task list is right; this step confirms which parts of it you're actually ready to spend real subagent runs on right now.
+### 6. Synthesize directly
 
-## Step 5: Dispatch subagents
+Assemble the deliverable yourself in the main conversation; don't spawn a synthesis subagent (you already have the context). Propose the format that fits what was produced (written doc, code changes, a fast-context summary another agent could pick up) rather than defaulting to one.
 
-Once decisions are in, for tasks marked **Deploy now** only:
+### 7. Grill-me, solution mode
 
-- **Independent tasks dispatch together** — multiple Agent tool calls in a single message, per the Agent tool's own guidance on parallel calls.
-- **Dependent tasks wait** — don't dispatch a task until the task(s) it depends on have returned. If a dependency was deferred or skipped, that task can't run this round either — hold it and carry it forward the same way as a deferred task.
-- **Each subagent prompt must be self-contained** — a fresh subagent has no memory of this conversation. Include: which skill to invoke and why, the relevant slice of the brief, any file paths or prior task outputs it needs, and what shape the response should take.
-- Use `subagent_type: general-purpose` unless a task clearly matches a more specific agent type — most dispatched work here needs broad tool access (Skill invocation plus file/search tools).
-- Pass the model chosen in Step 2 via the Agent tool's `model` parameter.
+Before presenting anything as final, run `grill-me` in solution mode against the synthesized output. Surface blocking issues as in step 4.
 
-Deferred and skipped tasks are not dispatched this round. Keep a running list of what got deferred (and why) — it resurfaces at Step 8.
+### 8. Present
 
-## Step 6: Synthesize directly
+Hand over the synthesized work plus the solution-mode findings so the user decides with full information. **Resurface everything deferred**, with reasons, and ask whether to dispatch now (loop back through step 5 for just those tasks), keep deferring, or drop it.
 
-Once subagents return, read their outputs and assemble the deliverable yourself, in the main conversation — don't spawn a separate synthesis subagent. You already have full context from decomposition; a fresh subagent wouldn't.
+## Tone
 
-Documentation format isn't fixed. Propose the right shape for what was actually produced — a written doc, code changes, a fast-context summary another agent could pick up later — rather than defaulting to one format regardless of the brief.
-
-## Step 7: Grill-me — solution mode
-
-Before presenting anything as final, run `grill-me` in solution-mode against the synthesized output. Surface it to the user the same way as Step 3 — blocking issues pause the flow.
-
-## Step 8: Present the deliverable
-
-Hand over the synthesized work plus the solution-mode grill-me findings (if any) so the user is deciding with full information, not being handed a polished result that quietly buried its own open questions.
-
-**Resurface anything deferred from Step 4.** List what was deferred and why, and ask whether to dispatch it now (looping back through Step 5 for just those tasks), keep deferring, or drop it for good. Deferred work doesn't get to quietly fall out of scope just because the rest of the project finished.
-
-## Tone and standalone usage
-
-Direct about gaps and blockers at every checkpoint — this skill's entire value is in not letting things slide silently past a pause point. If a task can't be matched to a skill, if a dependency is unclear, or if grill-me surfaces something blocking, say so plainly rather than smoothing it over to keep the flow moving.
+Be direct about gaps and blockers at every checkpoint: an unmatched task, an unclear dependency, or a blocking grill-me finding gets said plainly, never smoothed over to keep the flow moving.

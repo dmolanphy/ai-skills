@@ -9,6 +9,17 @@ Machine-readable index for `product-owner` to match tasks to skills. Update this
 - `trigger_summary` — short, task-oriented description of when to dispatch this skill (not the full SKILL.md description — just enough for `product-owner` to match against a decomposed task)
 - `status` — `active` (built and usable today) or `planned` (identified gap, not yet built — `product-owner` should flag these as "no skill available yet, needs manual work or skill creation" rather than fail silently)
 
+
+## Contents
+- Product Management
+- Strategy
+- Content
+- Design
+- Develop
+- Content Production
+- Utility / Infrastructure
+- Maintenance rule
+
 ---
 
 ## Product Management
@@ -17,7 +28,7 @@ Machine-readable index for `product-owner` to match tasks to skills. Update this
 |---|---|---|---|---|
 | design:design-critique | Product Management | review | Structured feedback on usability, hierarchy, consistency of a finished design | active |
 | grill-me | Product Management | stress-test | Devil's-advocate pressure-test of a brief or proposed solution before work starts/ships (two modes: brief-mode, solution-mode) | active |
-| product-owner | Product Management | orchestration | Literal dispatcher: onboarding wizard (checkbox phase-scoping every run), clarity check, decompose into tasks, match skills via this registry, assign model per task, per-task deploy/defer/skip approval, dispatch real subagents (parallel/sequential by dependency), synthesize, grill-me at two checkpoints. Requires Agent/Task tool — Cowork/Agent-SDK only | active |
+| product-owner | Product Management | orchestration | Literal dispatcher: scoping round (phase checkboxes + clarity gaps), decompose into tasks, match skills via this registry, assign model per task, grill-me brief-mode, one approval gate (grill-me findings + dispatch plan + per-task deploy/defer/skip), dispatch real subagents (parallel/sequential by dependency), synthesize, grill-me solution-mode. Requires Agent/Task tool — Cowork/Agent-SDK only | active |
 
 ## Strategy
 

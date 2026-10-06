@@ -18,13 +18,12 @@ AI-Skills/
 ├── competitive-audit/       # market landscape + how competitors frame and describe their solutions
 ├── seo-geo/                 # traditional SEO + AI answer-engine (GEO) audit and planning
 ├── seo-geo-scorecard/       # scored SEO/GEO readiness benchmark vs. named competitors
-├── product-owner/           # dispatcher: decomposes a brief, deploys subagents, synthesizes the result
+├── product-owner/           # dispatcher: decomposes a brief, deploys subagents, synthesizes the result (includes references/skills-registry.md)
 ├── transitions-dev/         # 21 production-ready CSS transitions + motion tokens (vendored)
-├── skills-registry.md       # machine-readable skill index for the in-progress product-owner orchestrator
 └── skills-roadmap.md        # discipline-by-discipline inventory of built vs. planned skills
 ```
 
-`skills-registry.md` and `skills-roadmap.md` aren't skills themselves — they're planning docs for a `product-owner` orchestrator (not yet built) that will decompose briefs and dispatch them to the right skill. Keep the registry in sync whenever a skill here goes from planned to active.
+`skills-roadmap.md` isn't a skill — it's the discipline-by-discipline inventory of built vs. planned skills. `product-owner/references/skills-registry.md` is the machine-readable index `product-owner` reads at runtime to match tasks to skills; it ships inside the skill folder so the skill works when installed on its own. Keep the registry in sync whenever a skill here is added, renamed, or goes from planned to active.
 
 `visual-storyteller`, `image-prompt-engineer`, and `brand-guardian` are adapted from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (MIT) — converted from agent-persona format to SKILL.md and distilled to fit my workflow. Provenance is noted at the bottom of each SKILL.md.
 
