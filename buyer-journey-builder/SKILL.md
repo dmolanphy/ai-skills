@@ -1,206 +1,88 @@
 ---
 name: buyer-journey-builder
-description: Build evidence-based buyer journey maps for any product/service. Use when users want to map customer decision processes, identify touchpoints, understand channel preferences by demographic, validate features against market data, or create journey visualizations. Trigger for "buyer journey," "customer journey," "purchase funnel," "touchpoints," "how customers buy," or requests to map decision-making processes.
+description: Builds evidence-based buyer journey maps for any product or service. Use when the user wants to map customer decision processes, identify touchpoints, understand channel preferences by audience, validate features against market data, or create journey visualizations. Trigger for "buyer journey," "customer journey," "purchase funnel," "touchpoints," "how customers buy," or requests to map decision-making.
 ---
 
 # Buyer Journey Builder
 
-Build evidence-backed journey maps that reveal what you know vs. what you're assuming.
+Build journey maps that separate what is known from what is assumed. Every claim carries an
+evidence tier; no timeframe, channel preference, or behavior is stated without data.
 
-## Core Principle: Evidence Over Assumptions
+## Evidence tiers
 
-**Three-tier validation system for every claim:**
+- ✅ **Validated** — needs 2+ of: cited research (source, sample size, year), multiple confirming sources, proven by a market leader, behavioral data.
+- ⚠️ **Validation needed** — logical but untested, or extrapolated from an adjacent market. State the evidence gap, explain the reasoning, recommend a specific validation (survey, A/B test, interviews).
+- 📱 **Table stakes** — competitors all have it or 70%+ expect it; absence is a dealbreaker, presence does not differentiate.
 
-✅ **Validated** - Research-backed + market proven (cite source, sample size, year)  
-⚠️ **Validation Needed** - Logical but untested (state gap, recommend validation)  
-📱 **Table Stakes** - Expected baseline (absence = dealbreaker, not differentiating)
+## Workflow
 
-**Always search first.** Never guess timeframes, channel preferences, or behaviors without data.
+### 1. Scope and start researching together
 
-## Quick Start Process
+Ask scoping questions in one AskUserQuestion round, and start the generic category searches
+in the same turn rather than waiting:
 
-### 1. Scope (Ask upfront)
-- Product/service, price point, purchase frequency?
-- Target audience demographics and generation?
-- Digital-first, omnichannel, or traditional?
-- Output goal: strategy deck, exec summary, or detailed map?
+- Product/service, price point, purchase frequency
+- Audience (B2B vs. B2C, first-time vs. repeat; demographics/generation if relevant)
+- Digital-first, omnichannel, or traditional
+- Output: executive summary, detailed map, multi-persona, or playbook
 
-### 2. Research (Search before building)
+### 2. Research
 
-**Essential searches:**
-```
-1. "[product category] buyer journey [current year]"
-2. "[demographic] purchase behavior [category]"  
-3. "[category] decision process timeframe"
-4. "[competitors] customer experience"
-5. "willingness to pay [category] features"
-```
+Run 3–5 searches before building, for example:
+`"[category] buyer journey [current year]"`, `"[audience] purchase behavior [category]"`,
+`"[category] decision process timeframe"`, `"[competitors] customer experience"`,
+`"willingness to pay [category] features"`.
 
-**Prioritize these data sources:**
-- Tier 1: Academic studies, industry association reports (S&P, J.D. Power), government data
-- Tier 2: Consulting firms (McKinsey, Deloitte), platform statistics
-- Tier 3: Vendor white papers (note bias), single-source claims
+Source priority: **Tier 1** academic studies, industry association reports, government data;
+**Tier 2** consulting firms, platform statistics; **Tier 3** vendor white papers (note bias)
+and single-source claims. Per the user's standing preference, prefer sources no older than 3 years.
 
-**When data is limited:**
-- Triangulate from adjacent industries
-- Label as assumption: "Estimated based on [related sector]..."
-- Recommend validation: "Test via [customer interviews/A-B test]"
+Find current data on: purchase cycle length, channel preferences per audience (do not assume
+generational stereotypes), willingness to pay, competitor strategies and failures, category
+friction, and trust factors. When data is thin, triangulate from adjacent industries, label it
+("Estimated based on [related sector]"), and recommend validation.
 
-### 3. Map Standard Journey Phases
+### 3. Map the phases
 
-For each phase, document:
+**Awareness → Consideration → Evaluation → Decision → Purchase → Delivery.** Per phase:
+⏱️ duration (cited), 🎯 mindset (questions they ask), 📱 channels (audience-specific),
+🎬 activities, ⚠️ friction (drop-off causes), 🏆 success metric.
 
-**Awareness** → **Consideration** → **Evaluation** → **Decision** → **Purchase** → **Delivery**
+Timeframes: cite a benchmark or label as an estimate, use ranges ("2–4 weeks"), and separate
+user time from system processing time. Example: ❌ "Purchase takes 15–20 minutes" →
+✅ "Checkout ~30 min (cited benchmark, year); processing 1–3 days".
 
-Per phase capture:
-- ⏱️ **Duration** (cite source)
-- 🎯 **Mindset** (questions they're asking)  
-- 📱 **Channels** (demographic-specific)
-- 🎬 **Activities** (what they do)
-- ⚠️ **Friction** (drop-off causes)
-- 🏆 **Success metric** (what advances them)
+### 4. Build the deliverable
 
-### 4. Channel Mapping by Demographics
+Include: phase labels with icons, sourced durations, primary channels, key activities and
+touchpoints, insights/recommendations, a methodology note with sources, ✅⚠️📱 indicators,
+and a mobile-responsive layout.
 
-**Gen Z:** TikTok, Instagram, YouTube, mobile-first (73% research via Connected TV)  
-**Millennials:** Instagram, YouTube, Reddit, desktop + mobile (72% familiar with SDVs)  
-**Gen X:** Facebook, email, desktop research  
-**Boomers:** Facebook, email, traditional media
+Formats: executive timeline (4–6 phases, one page), detailed map (swim lanes for channels,
+emotions, pain points), multi-persona, interactive HTML (tooltips, sources, expandable
+details), strategic playbook (journey + validation + feature prioritization + tests), or slides.
+Pick from the user's stated goal and audience.
 
-**Map to phases:**
-- Awareness: Social, ads, word-of-mouth
-- Research: Google, comparison sites, reviews  
-- Evaluation: Brand site, configurators, trials
-- Purchase: E-commerce, configurators, sales team
+### 5. Recommend
 
-### 5. Validate Every Timeframe
+- **✅ Invest here** — strong evidence, competitor-proven, clear business case.
+- **⚠️ Test before scaling** — logical but unproven; name the specific test.
+- **❌ Avoid / low priority** — low willingness to pay, competitor failures, audience mismatch.
 
-**Never assume. Always cite:**
-- ❌ "Purchase takes 15-20 minutes"
-- ✅ "Checkout: ~30 min (Carvana benchmark, 2024); Processing: 1-3 days"
+## Pitfalls
 
-**Required for timeframes:**
-- Industry benchmark reports
-- Competitor case studies with data
-- Separate user time vs. system processing time
-- Use ranges: "2-4 weeks" not "3 weeks"
+1. Stating anything without source, sample size, and year.
+2. Treating generations as interchangeable, or B2B as B2C.
+3. Confusing correlation with causation ("uses TikTok" ≠ "will buy via TikTok").
+4. Assuming features equal value; find willingness-to-pay data.
+5. Missing table stakes: expected features are not purchase drivers.
+6. Hiding negative data; declining willingness to pay is a key insight.
 
-### 6. Apply Validation Framework
+## Before delivery
 
-**✅ Validated requires 2+ of:**
-- Cited research (sample size, year)
-- Multiple sources confirm
-- Market leader proven (Tesla, Amazon, etc.)
-- Behavioral data backs it
-
-**⚠️ Validation Needed when:**
-- Extrapolated from adjacent market
-- Logical but no direct proof
-- Assumptions about preferences
-
-**Action required:**
-- State evidence gap explicitly
-- Explain reasoning
-- Recommend specific validation (survey, test, interview)
-
-**📱 Table Stakes when:**
-- Competitors all have it
-- 70%+ baseline expectation
-- Industry standard, not differentiating
-
-### 7. Create Visual
-
-**Required elements:**
-- Clear phase labels with icons
-- Duration for each phase (sourced)
-- Primary channels per phase
-- Key activities/touchpoints
-- Insights/recommendations section
-- Methodology note with sources
-- Validation indicators (✅⚠️📱)
-- Mobile responsive design
-
-**Format options:**
-- Executive timeline (4-6 phases, high-level)
-- Detailed map (swim lanes for channels, emotions, pain points)
-- Multi-persona (different buyer types)
-
-### 8. Strategic Recommendations
-
-Structure as:
-
-**✅ Invest Here (High ROI)**
-- Strong evidence, proven by competitors, clear business case
-
-**⚠️ Test Before Scaling**  
-- Logical but unproven, requires customer validation, specific test recommended
-
-**❌ Avoid / Low Priority**
-- Evidence shows low willingness to pay, competitor failures, audience mismatch
-
-## Critical Pitfalls to Avoid
-
-1. **Over-confidence without data** - Always cite source, sample size, year
-2. **Ignoring generations** - Gen Z ≠ Millennials (different channels, willingness to pay)
-3. **Confusing correlation/causation** - "Uses TikTok" ≠ "will buy via TikTok"
-4. **Assuming features = value** - Always find willingness-to-pay data
-5. **Not distinguishing table stakes** - Expected features ≠ purchase drivers
-6. **Hiding negative data** - Declining willingness to pay (86%→68%) is critical insight
-7. **One-size-fits-all** - B2B ≠ B2C, first-time ≠ repeat buyers
-
-## Key Data Points to Search For
-
-**Always search for current data on:**
-- Purchase cycle length benchmarks
-- Generational channel preferences  
-- Willingness to pay for features/subscriptions
-- Competitive strategies and failures
-- Pain points and friction in category
-- Trust factors and decision criteria
-
-**Example willingness to pay insights:**
-- Dropped from 86% (2024) to 68% (2025) for connected car services
-- Average monthly: €5-7 (well below OEM expectations)
-- 72% subscribe after free trial (trials critical for conversion)
-- Safety/Security and EV services = highest WTP
-- Navigation/Personalization = lowest WTP (smartphones provide this)
-
-## Quality Checklist
-
-Before delivery, verify:
-- [ ] 3-5 web searches conducted for recent data
-- [ ] Every timeframe has source or labeled as estimate
-- [ ] Channels are demographic-specific (not generic)
-- [ ] Evidence levels marked (✅⚠️📱) for all major claims
-- [ ] Competitive examples included
-- [ ] Strategic recommendations prioritized and actionable
-- [ ] Sources/methodology documented
+- [ ] 3–5 searches run for recent data
+- [ ] Every timeframe sourced or labeled an estimate
+- [ ] Channels are audience-specific, not generic
+- [ ] ✅⚠️📱 marked on all major claims
+- [ ] Competitive examples, prioritized recommendations, and methodology/sources included
 - [ ] Visual is presentation-ready
-
-## When User Challenges Your Work
-
-**Good responses:**
-- "You're right to push back. Let me search for actual data..."
-- "That was an assumption. Here's what the research shows..."
-- "Great catch. Let me find current benchmarks..."
-
-**Bad responses:**
-- Defending unsupported claims
-- Citing "common sense" without data  
-- Assuming you know better than domain experts
-
-## Output Format Examples
-
-**Executive Summary** (1 page): Phases, timeframes, channels, top 3 insights, priorities
-
-**Interactive Map** (HTML): Full journey with tooltips, data sources, expandable details
-
-**Strategic Playbook** (Multi-page): Journey + validation framework + feature prioritization + testing recommendations
-
-**Presentation** (Slides): Visual timeline, key data, recommendations, next steps
-
-Choose based on user's stated goal and audience.
-
----
-
-**Remember:** The goal is an honest, evidence-based map that reveals what you know vs. assume, identifies validation gaps, and provides actionable insights backed by data. When in doubt: search, label assumptions, recommend validation.
