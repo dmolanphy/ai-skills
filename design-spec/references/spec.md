@@ -2,6 +2,15 @@
 
 Source: https://stitch.withgoogle.com/docs/design-md/specification
 
+
+## Contents
+- Overview
+- YAML front matter schema (token reference syntax)
+- Token types (typography, color shades)
+- Markdown body sections (required order)
+- Consumer behavior for unknown content
+- Recommended token names
+
 ---
 
 ## Overview

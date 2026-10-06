@@ -4,6 +4,13 @@ This file defines the default validation rules used when generating and auditing
 The default standard is **Tailwind CSS v3 defaults**. Project-specific overrides may replace or
 extend these rules when the user specifies a different standard.
 
+
+## Contents
+- How to use this file
+- Tailwind CSS v3 defaults (type ramp, grid & spacing, color system, component tokens)
+- Asking about alternate standards
+- Validation output format
+
 ---
 
 ## How to use this file
