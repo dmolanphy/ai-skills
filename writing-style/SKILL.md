@@ -1,13 +1,11 @@
 ---
 name: writing-style
 description: >
-  Apply the user's personal writing voice and style preferences across all writing tasks.
-  Use this skill whenever the user asks for help with headlines, copy, subtext, or any
-  design-facing writing. Also use it for strategy decks, creative briefs, or internal
-  documents that need to sound sharp and directional. Trigger on any request involving
-  copywriting, headline options, deck language, brief writing, client-facing messaging,
-  or narrative framing — even if the user just says "help me write this" or "give me
-  some headline options." When in doubt, use this skill.
+  Applies the user's personal writing voice and structural preferences to design-facing and
+  strategy writing. Use for headlines, subtext, copy, strategy decks, creative briefs,
+  internal documents that need to sound sharp and directional, client-facing messaging, deck
+  language, and narrative framing — including loose requests like "help me write this" or
+  "give me some headline options."
 ---
 
 # Writing Style Skill
@@ -37,13 +35,14 @@ There are two primary modes. Read both before starting — they share a common f
 
 Used for: headlines, subtext, copy for design deliverables across different clients.
 
-### Intake Questions (Ask First, Every Time)
+### Intake Questions
 
-Before writing anything, ask: **"Is this for a client or for day-to-day work?"**
+Before writing anything, establish: **is this for a client or for day-to-day work?** If the request already makes it clear (a named client, a client deliverable, or obviously internal work), don't ask; proceed. Otherwise ask: **"Is this for a client or for day-to-day work?"**
 
 - If **day-to-day**: proceed directly with the core voice. No further questions needed.
 - If **client**: ask one follow-up — **"Are there existing voice & tone guidelines, or any
-  guiding principles I should stick to?"** Wait for the answer before writing.
+  guiding principles I should stick to?"** Wait for the answer before writing (skip it if
+  the user already supplied guidelines).
   - If yes: factor those guidelines into tone calibration below, layered on top of the core voice.
   - If no: proceed with tone calibration based on whatever context you have.
 
@@ -52,7 +51,7 @@ Keep the intake to these two questions max. Don't over-interview.
 ### Tone Calibration
 The base voice always pushes approachability and narrative. Client tone may shift — some
 clients skew more formal, some more bold — but never tip into corporate or generic.
-Ask the user for a one-line tone note if the client context isn't clear after intake.
+Only if the client's tone is genuinely unclear after intake, ask for a one-line tone note; otherwise proceed.
 
 ### Headline Rules
 - Short, punchy, declarative.
@@ -120,12 +119,6 @@ probably doing too much. Cut until it hurts slightly, then cut one more thing.
 - Strong idea > polished writing. Clear narrative > completeness. Insight > volume.
 
 ### What Good Looks Like
-- Something presentable to a client with minimal rewriting.
-- A perspective that reframes the problem meaningfully.
-- Output that sparks additional directions, not just answers the question.
-
-### What to Avoid
-- Safe, obvious thinking.
-- Overly formatted or templated responses.
-- Generic best practices without context.
-- Excessive length without new insight.
+- Presentable to a client with minimal rewriting.
+- Reframes the problem meaningfully and sparks additional directions, not just answers the question.
+- Avoids: safe, obvious thinking; templated formatting; generic best practices without context; length without new insight.

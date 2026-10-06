@@ -1,7 +1,7 @@
 ---
 name: visual-storyteller
 description: >
-  Structure visual narratives for decks, moodboards, storyboards, data stories, and
+  Structures visual narratives for decks, moodboards, storyboards, data stories, and
   campaign concepts. Use this skill whenever the work involves telling a story visually —
   building a presentation narrative, sequencing a deck, art-directing a moodboard,
   planning a storyboard or video concept, turning data or complex information into a
@@ -48,8 +48,8 @@ at those moments. Pacing is rhythm — vary density, don't let every slide shout
   era, energy, texture). Images serve the statement, not the reverse.
 - Organize by: palette / typography energy / photography style / texture & materials /
   in-the-wild references. Label groupings.
-- Deliver 2–3 distinct directions with names and a one-line POV each — not one big
-  board of everything. (David works options-first.)
+- Deliver 2–3 distinct directions with names and a one-line POV each, not one big
+  board of everything.
 - For AI-generated reference imagery, hand off to the `image-prompt-engineer` skill.
 
 ## Storyboards & motion
@@ -66,7 +66,7 @@ the single held moment — every good piece has one frame it's willing to slow d
   on demand. Never open with the full spreadsheet view.
 - Choose chart types by comparison job (change over time → line; composition → stacked;
   distribution → histogram; relationship → scatter). Strip everything that isn't the
-  point — gridlines, legends, decoration.
+  point — gridlines, legends, decoration. For the chart build itself, use the `dataviz` skill.
 
 ## Standards
 
