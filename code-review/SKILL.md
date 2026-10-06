@@ -1,65 +1,56 @@
 ---
 name: code-review
 description: >
-  Reviews code for correctness, readability, and maintainability — general-purpose
-  quality review, not security auditing and not GitHub-PR-diff mechanics. Use this
-  whenever the user says "review this code," "code review," "is this well-structured,"
-  "check this for quality," "does this look right," or shares a file, function, or
-  snippet and wants feedback before merging or shipping. Distinct from security-review
-  (vulnerability-focused) and review (GitHub PR review workflow) — this skill works on
-  any code regardless of whether it's a diff, a whole file, or a pasted snippet, and
-  its lens is quality/maintainability rather than security or PR mechanics. Also called
-  internally by product-owner as the Develop-discipline review step before subagent
-  output is synthesized.
+  Reviews code for correctness, readability, and maintainability. Use when the user says
+  "review this code," "code review," "is this well-structured," "check this for quality,"
+  "does this look right," or shares a file, function, snippet, or diff and wants feedback
+  before merging or shipping. General-purpose quality lens only: use security-review for
+  vulnerabilities and review for GitHub PR workflow. Also used by product-owner as the
+  Develop-discipline review step.
 ---
 
 # Code Review
 
-A structured quality pass on code — correctness, readability, and maintainability. Not a security audit (use `security-review` for that) and not a GitHub PR workflow (use `review` for that). This is the skill for "is this good code," asked of any snippet, file, or module regardless of where it lives.
+A structured quality pass on any code (snippet, file, module, or diff): is it correct,
+readable, and maintainable?
 
-## Step 1: Establish scope
+## 1. Scope
 
-Before reviewing, confirm (from context or by asking if genuinely unclear):
+Infer from context what is being reviewed, the language/stack, and existing conventions
+(CLAUDE.md, style guide, lint config, patterns elsewhere in the codebase). Ask only if scope is
+genuinely ambiguous. Prefer matching existing conventions over generic best practice. For a
+fragment with no surrounding context, say so rather than assuming conventions.
 
-- **What's being reviewed** — a single function, a file, a module, a whole diff?
-- **Language/stack** — review criteria differ (e.g. error handling idioms in Go vs. JS).
-- **Existing conventions** — is there a CLAUDE.md, style guide, lint config, or established pattern elsewhere in the codebase this should be checked against? Prefer matching what's already there over imposing generic best practice.
+## 2. Review
 
-If reviewing a fragment with no surrounding codebase context, say so explicitly rather than assuming conventions that may not hold.
+Apply only the dimensions that are present:
 
-## Step 2: Work through the quality dimensions
+- **Correctness:** logic bugs, off-by-one, bad assumptions, unhandled edge cases (empty input, null, concurrency, scale).
+- **Readability:** naming, function/file length, nesting, intent clear without heavy comments.
+- **Duplication and structure:** logic to extract, misplaced responsibilities, coupling that makes change hard.
+- **Error handling:** explicit, swallowed, or left to crash; is the failure mode right for where this runs?
+- **Consistency:** matches the codebase's established patterns, or introduces a new one without reason.
+- **Tests:** are risky paths (edge cases, error branches) covered, not just the happy path? Note gaps; don't demand 100%.
+- **Performance:** flag only real concerns (O(n²) on unbounded n, N+1 queries, needless re-renders), not micro-optimizations.
 
-Adapt to what's actually present — don't recite a checklist that doesn't apply.
-
-1. **Correctness** — Logic bugs, off-by-one errors, incorrect assumptions, unhandled edge cases (empty input, null/undefined, concurrent access, scale).
-2. **Readability** — Naming, function/file length, nesting depth, whether a new reader could follow the intent without extensive comments.
-3. **Duplication & structure** — Repeated logic that should be extracted, misplaced responsibilities, coupling that will make future changes harder.
-4. **Error handling** — Are failures handled explicitly, silently swallowed, or left to crash? Is the failure mode appropriate for where this code runs?
-5. **Consistency** — Does this match the conventions already established elsewhere in the codebase (naming, structure, error handling style), or does it introduce a new pattern without reason?
-6. **Test coverage** — Are the risky paths (edge cases, error branches) covered, or only the happy path? Note gaps rather than requiring 100% coverage as a rule.
-7. **Performance** — Only flag if there's a real concern (e.g. O(n²) where n is unbounded, unnecessary re-renders, N+1 queries) — not micro-optimization for its own sake.
-
-## Step 3: Structure the output
-
-Reuse the `grill-me` format so output is consistent across the skills library:
+## 3. Output
 
 ```
 ## Blocking Issues
-[Bugs, correctness problems, or maintainability risks serious enough to fix before merging — cite the specific file/line/function]
+[Bugs, correctness problems, or maintainability risks to fix before merging; cite file/line/function]
 
 ## Worth Considering
-[Real improvements that aren't blocking — flag them, don't force a fix]
+[Real, non-blocking improvements; flag, don't force]
 
 ## Direct Questions For You
-[2-5 pointed questions where intent is genuinely unclear and guessing would be wrong — e.g. "is this edge case actually reachable in production?"]
+[2–5 pointed questions where intent is genuinely unclear and guessing would be wrong]
 ```
 
-Keep "Blocking Issues" honest — if the code is solid, say so rather than manufacturing findings to seem thorough. Cite the specific line or function for every point; generic observations that could apply to any code aren't useful.
+Be honest: if the code is solid, say so rather than inventing findings. Cite the specific line
+or function for every point, and make each actionable (what to change and why). Tone is direct and specific,
+neither performative about severity nor hedging on real problems.
 
-## Tone
+## Under product-owner
 
-Direct and specific, matching `grill-me`'s tone — not performative about severity, not hedging on real problems. Every point should be actionable: what to change and why, not just "this feels off."
-
-## Standalone vs. product-owner usage
-
-Works identically whether invoked directly ("review this code") or dispatched by `product-owner` as the Develop-discipline quality-review step. When `product-owner` calls it, surface the output to the user the same way `grill-me` does — blocking issues should pause the flow for a decision, not get silently auto-fixed by an agent guessing at intent.
+Works identically when dispatched by `product-owner`. Surface the output to the user as
+usual; blocking issues pause the flow for a decision and are never auto-fixed by guessing at intent.
