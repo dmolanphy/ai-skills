@@ -1,9 +1,11 @@
 ---
-name: seo-geo-audit-builder
-description: Run a technical SEO/GEO Readiness Audit on a website — real, verifiable checks (not simulated AI-citation scores) covering SEO fundamentals and AI-crawler/GEO readiness, scored and compared against competitors on the same rubric. Use when users want to audit a site's search or AI-visibility, ask "run a GEO audit," "check our SEO," "how visible are we to AI," or want to compare technical readiness against named competitors. Trigger for "SEO audit," "GEO audit," "technical audit," "crawler accessibility," "is our site AI-ready," or requests to size up a site against competitors on search/AI fundamentals. Distinct from market-landscape-builder's competitive-artifact lens (qualitative) — this produces a scored, checklist-driven technical assessment. Honest about its limits — measures technical readiness, not live AI-citation share, which needs paid tools (Profound, Gumshoe, Semrush AI visibility); says so rather than simulating it.
+name: seo-geo-scorecard
+description: Produce a scored SEO/GEO Readiness Scorecard for a website, benchmarked against named competitors on the same 12-check rubric — real, verifiable checks (not simulated AI-citation scores) covering SEO fundamentals and AI-crawler/GEO readiness, plus a live cross-engine citation test. A client-facing strategy deliverable, not a fix list. Use when the user wants a SCORE or a COMPETITOR COMPARISON: "SEO scorecard," "GEO scorecard," "readiness audit," "benchmark us against competitors on SEO/GEO," "how do we stack up against [competitor] for AI visibility," "is our site AI-ready compared to X." For a general "SEO audit," keyword research, content planning, or fixing a site's code, use seo-geo instead. Distinct from market-landscape-builder's competitive-artifact lens (qualitative). Honest about its limits — measures technical readiness, not live AI-citation share, which needs paid tools (Profound, Gumshoe, Semrush AI visibility); says so rather than simulating it.
 ---
 
-# SEO/GEO Audit Builder
+# SEO/GEO Scorecard
+
+> **Scope:** This skill produces a scored, competitor-benchmarked deliverable. For open-ended SEO/GEO audits, keyword research, planning content before it's written, or implementing fixes in code, use `seo-geo` instead. If an audit via `seo-geo` surfaces a need for a competitor comparison, hand off here — and if this scorecard surfaces fixes worth making, hand off to `seo-geo`.
 
 Run a real, verifiable technical audit — never a simulated citation score dressed up as a real one.
 

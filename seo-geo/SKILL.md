@@ -10,12 +10,16 @@ description: >
   proposes changes and gets explicit go-ahead before editing anything. Use when the
   user says "SEO audit," "is this optimized for search," "will AI engines cite this,"
   "GEO," "keyword research," "technical SEO," "why aren't we ranking," or wants search
-  or AI-answer-engine visibility evaluated or planned for.
+  or AI-answer-engine visibility evaluated or planned for. For a scored, competitor-
+  benchmarked deliverable ("SEO scorecard," "benchmark us against competitors"), use
+  seo-geo-scorecard instead.
 ---
 
 # SEO / GEO
 
 Evaluates and improves visibility in two channels with equal billing: traditional search engines (SEO) and AI answer engines like ChatGPT, Perplexity, and Google AI Overviews (GEO — generative engine optimization). Works on existing sites/pages or on content that hasn't been written yet.
+
+> **Scope:** This skill is the open-ended, build-phase one — research, audit or plan, and fix. If the user wants a repeatable 12-check score benchmarked against named competitors (a client-facing deliverable), use `seo-geo-scorecard` instead. If a scorecard has already been run, use this skill to act on its findings.
 
 ## Core Principle: Evidence Over Assumptions
 
