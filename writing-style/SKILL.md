@@ -1,12 +1,23 @@
 ---
 name: writing-style
-description: Applies the user's personal writing voice and structural preferences to design-facing, strategy, and advertising writing. Always applies the core voice, then loads one mode: client-facing headlines and copy, strategy decks and creative briefs, or ad headlines, taglines and slogans. Use for headlines, subtext, copy, strategy decks, creative briefs, internal documents that need to sound sharp and directional, client-facing messaging, deck language, narrative framing, ad headlines, taglines, and campaign lines, including loose requests like "help me write this" or "give me some headline options."
+description: Applies the user's personal writing voice and structural preferences to design-facing, strategy, and advertising writing. Always applies the core voice, then loads one mode: client-facing headlines and copy, strategy decks and creative briefs, or ad headlines, taglines and slogans. Use for headlines, subtext, copy, strategy decks, creative briefs, internal documents that need to sound sharp and directional, client-facing messaging, deck language, narrative framing, ad headlines, taglines, and campaign lines, including loose requests like "help me write this" or "give me some headline options." Always use when asked to make a headline punchier, or to punch up, tighten, sharpen, or rewrite a headline, subhead, tagline, or single line, even when the request is one line.
 ---
 
 # Writing Style Skill
 
 This skill applies the user's established voice and structural preferences to writing tasks.
 The core voice and interaction rules below always apply. Each mode lives in its own file and loads only when needed.
+
+---
+
+## Always Trigger This Skill When
+
+- The user asks to make a headline punchier. This is a standing rule. Load the skill every time, even when the request is one line and looks too small to need it.
+- They ask to punch up, tighten, sharpen, shorten, or rewrite a headline, subhead, tagline, or any single line of copy.
+- They ask for headline options, alternatives, or a "better version" of text they pasted.
+- The output is writing the user will publish or send as themselves (portfolio, case study, deck, LinkedIn, email, Substack).
+
+A short request is not a reason to skip the skill. Short lines are where voice shows most.
 
 ---
 
@@ -38,7 +49,7 @@ Read only the one mode file that matches the request. Don't load the others.
 
 **Routing:** Infer the mode from the request.
 - Ad cues (ad, campaign, tagline, slogan, billboard, OOH, paid social, banner, subject line, or a line meant to make people click, buy, or act) go to Mode 3.
-- Copy on a design deliverable goes to Mode 1.
+- Copy on a design deliverable goes to Mode 1. A pasted headline with "make this punchier" and no ad cues is Mode 1 by default (portfolio, case study, deck, site).
 - A deck narrative or brief goes to Mode 2.
 - If it's genuinely unclear between Mode 1 and Mode 3, ask once: "Is this an ad line meant to move someone to act, or copy for a design deliverable?"
 - If a request spans modes, load each file you need and apply the one that matches each part.
